@@ -31,6 +31,13 @@ public class Coordinate {
         return (Double.compare(coordinate.getX(), this.getX()) == 0 && Double.compare(coordinate.getY(), this.getY()) == 0 && Double.compare(coordinate.getZ(), this.getZ()) == 0) ? true : false;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if(o instanceof Coordinate)
+            return this.isEqual((Coordinate) o);
+        return false;
+    }
+
     public double getX() {
         return x;
     }
