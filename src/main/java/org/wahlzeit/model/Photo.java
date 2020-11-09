@@ -98,6 +98,12 @@ public class Photo extends DataObject {
 	 */
 	protected int praiseSum = 10;
 	protected int noVotes = 1;
+
+
+	/**
+	 *
+	 */
+	protected Location location;
 	
 	/**
 	 * 
@@ -199,6 +205,23 @@ public class Photo extends DataObject {
 	 */
 	public PhotoId getId() {
 		return id;
+	}
+
+	/**
+	 *
+	 * @methodtype get
+	 */
+	public Location getLocation() {
+		return location;
+	}
+
+	/**
+	 *
+	 * @methodtype set
+	 */
+	public void setLocation(Location location) {
+		this.location = location;
+		incWriteCount();
 	}
 	
 	/**
