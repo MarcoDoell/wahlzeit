@@ -18,8 +18,6 @@ public class Location {
     }
 
     public void setCoordinate(Coordinate coordinate) {
-        if(coordinate == null)
-            throw new RuntimeException("provided coordinate is null");
         this.coordinate = coordinate;
     }
 }
