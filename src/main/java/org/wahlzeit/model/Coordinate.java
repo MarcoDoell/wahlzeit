@@ -17,7 +17,7 @@ public class Coordinate {
             throw new NullPointerException("Provided coordinate parameter is null");
 
         double result = Math.sqrt(
-                Math.pow((coordinate.getX() - coordinate.getX()), 2) + Math.pow((coordinate.getY() - coordinate.getY()), 2) + Math.pow((coordinate.getZ() - coordinate.getZ()), 2));
+                Math.pow((coordinate.getX() - this.getX()), 2) + Math.pow((coordinate.getY() - this.getY()), 2) + Math.pow((coordinate.getZ() - this.getZ()), 2));
 
         if(result == Double.NaN)
             throw new RuntimeException("Calculations went wrong");
