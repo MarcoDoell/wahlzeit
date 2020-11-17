@@ -1,6 +1,6 @@
 package org.wahlzeit.model;
 
-public class CarPhotoFactory {
+public class CarPhotoFactory extends PhotoFactory {
 
     public CarPhotoFactory() {
         super();

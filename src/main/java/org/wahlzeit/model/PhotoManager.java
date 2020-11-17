@@ -35,7 +35,7 @@ public class PhotoManager extends ObjectManager {
 	/**
 	 * 
 	 */
-	protected static final PhotoManager instance = new PhotoManager();
+	protected static final PhotoManager instance = new CarPhotoManager();
 
 	/**
 	 * In-memory cache for photos
@@ -76,7 +76,7 @@ public class PhotoManager extends ObjectManager {
 	}
 	
 	/**
-	 * 
+	 *
 	 */
 	public static final Photo getPhoto(PhotoId id) {
 		return instance.getPhotoFromId(id);
