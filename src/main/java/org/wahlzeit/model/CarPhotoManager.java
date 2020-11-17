@@ -1,4 +1,8 @@
 package org.wahlzeit.model;
 
-public class CarPhotoManager {
+public class CarPhotoManager extends PhotoManager {
+
+    public CarPhotoManager() {
+        super();
+    }
 }
