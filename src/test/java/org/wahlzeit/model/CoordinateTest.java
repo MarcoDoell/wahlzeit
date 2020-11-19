@@ -39,10 +39,19 @@ public class CoordinateTest {
         Coordinate coord2 = new Coordinate(0,0,0);
 
         //Arrange
-        boolean result = coord1.equals(coord2);
+        boolean result = coord1.isEqual(coord2);
 
         //Assert
         assertEquals(result,true);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testisEqualThrowsNullPointerException() {
+        //Act
+        Coordinate coord1 = new Coordinate(0,0,0);
+
+        //Arrange
+        boolean result = coord1.isEqual(null);
     }
 
     @Test()
@@ -52,7 +61,7 @@ public class CoordinateTest {
         Coordinate coord2 = new Coordinate(1,0,0);
 
         //Arrange
-        boolean result = coord1.equals(coord2);
+        boolean result = coord1.isEqual(coord2);
 
         //Assert
         assertEquals(result,false);
