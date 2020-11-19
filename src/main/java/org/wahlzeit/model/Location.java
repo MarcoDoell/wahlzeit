@@ -20,4 +20,9 @@ public class Location {
     public void setCoordinate(Coordinate coordinate) {
         this.coordinate = coordinate;
     }
+
+    @Override
+    public String toString() {
+        return coordinate.getX() + "/" + coordinate.getY() + "/" + coordinate.getZ();
+    }
 }

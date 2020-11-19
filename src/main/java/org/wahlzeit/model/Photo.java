@@ -103,7 +103,7 @@ public class Photo extends DataObject {
 	/**
 	 *
 	 */
-	protected Location location = null;
+	protected Location location = new Location(new Coordinate(Math.random(), Math.random(), Math.random()));
 	
 	/**
 	 * 
@@ -170,6 +170,8 @@ public class Photo extends DataObject {
 		creationTime = rset.getLong("creation_time");
 
 		maxPhotoSize = PhotoSize.getFromWidthHeight(width, height);
+
+		location = new Location(new Coordinate(rset.getString("location")));
 	}
 	
 	/**
@@ -190,6 +192,7 @@ public class Photo extends DataObject {
 		rset.updateInt("praise_sum", praiseSum);
 		rset.updateInt("no_votes", noVotes);
 		rset.updateLong("creation_time", creationTime);
+		rset.updateString("location", String.valueOf(location));
 	}
 
 	/**

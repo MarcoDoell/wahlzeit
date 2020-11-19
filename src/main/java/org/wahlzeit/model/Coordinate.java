@@ -14,6 +14,15 @@ public class Coordinate {
         this.z = z;
     }
 
+    public Coordinate(String coordinateasString) {
+
+        String[] coordSplit = coordinateasString.split("/");
+
+        this.x = Double.parseDouble(coordSplit[0]);
+        this.y = Double.parseDouble(coordSplit[1]);
+        this.z = Double.parseDouble(coordSplit[2]);
+    }
+
     double getDistance(Coordinate coordinate) {
         if(coordinate == null)
             throw new NullPointerException("Provided coordinate parameter is null");
