@@ -28,7 +28,9 @@ public class Coordinate {
     boolean isEqual(Coordinate coordinate) {
         if(coordinate == null)
             throw new NullPointerException("Provided coordinate parameter is null");
-        return (Double.compare(coordinate.getX(), this.getX()) == 0 && Double.compare(coordinate.getY(), this.getY()) == 0 && Double.compare(coordinate.getZ(), this.getZ()) == 0) ? true : false;
+        return  Double.compare(coordinate.getX(), this.getX()) == 0 &&
+                Double.compare(coordinate.getY(), this.getY()) == 0 &&
+                Double.compare(coordinate.getZ(), this.getZ()) == 0;
     }
 
     @Override
