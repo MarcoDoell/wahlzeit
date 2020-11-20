@@ -35,8 +35,8 @@ public class CoordinateTest {
     @Test()
     public void testisEqualworks() {
         //Act
-        Coordinate coord1 = new Coordinate(0,0,0);
-        Coordinate coord2 = new Coordinate(0,0,0);
+        Coordinate coord1 = new Coordinate(3.12312312351,0,0);
+        Coordinate coord2 = new Coordinate(3.12312312351,0,0);
 
         //Arrange
         boolean result = coord1.isEqual(coord2);
@@ -57,8 +57,8 @@ public class CoordinateTest {
     @Test()
     public void testisEqualDoesntWorks() {
         //Act
-        Coordinate coord1 = new Coordinate(0,0,0);
-        Coordinate coord2 = new Coordinate(1,0,0);
+        Coordinate coord1 = new Coordinate(3.12312312351,0,0);
+        Coordinate coord2 = new Coordinate(3.12352312351,0,0);
 
         //Arrange
         boolean result = coord1.isEqual(coord2);

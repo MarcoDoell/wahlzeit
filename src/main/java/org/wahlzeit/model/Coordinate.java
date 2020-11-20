@@ -37,11 +37,14 @@ public class Coordinate {
     }
 
     boolean isEqual(Coordinate coordinate) {
+        final double THRESHOLD = .0001;
+
         if(coordinate == null)
             throw new NullPointerException("Provided coordinate parameter is null");
-        return  Double.compare(coordinate.getX(), this.getX()) == 0 &&
-                Double.compare(coordinate.getY(), this.getY()) == 0 &&
-                Double.compare(coordinate.getZ(), this.getZ()) == 0;
+
+        return Math.abs(coordinate.getX() - this.getX()) < THRESHOLD &&
+               Math.abs(coordinate.getY() - this.getY()) <THRESHOLD &&
+               Math.abs(coordinate.getZ() - this.getZ()) < THRESHOLD;
     }
 
     @Override
