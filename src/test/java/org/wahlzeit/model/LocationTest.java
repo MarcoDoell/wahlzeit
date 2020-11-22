@@ -36,4 +36,17 @@ public class LocationTest {
         assertEquals(location.getCoordinate().getY(),0,0);
         assertEquals(location.getCoordinate().getZ(),0,0);
     }
+
+
+    @Test
+    public void testToStringWorks() {
+        //Act
+        Location loc = new Location(new Coordinate(1.0,2.0,3.0));
+
+        //Arrange
+        String locationToString = loc.toString();
+
+        //Assert
+        assertEquals(locationToString,"1.0/2.0/3.0");
+    }
 }
