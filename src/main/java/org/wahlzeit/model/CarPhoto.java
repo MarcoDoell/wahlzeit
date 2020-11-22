@@ -33,9 +33,7 @@ public class CarPhoto extends Photo {
         this.car.setBrand(rset.getString("brand"));
     }
 
-    /**
-     *
-     */
+    @Override
     public void writeOn(ResultSet rset) throws SQLException {
         super.writeOn(rset);
         rset.updateString("brand",this.car.getBrand());
