@@ -30,7 +30,7 @@ public class CarPhoto extends Photo {
     @Override
     public void readFrom(ResultSet rset) throws SQLException {
         super.readFrom(rset);
-        this.car.setBrand(rset.getString("brand"));
+        this.car = new Car(rset.getString("brand"));
     }
 
     @Override
