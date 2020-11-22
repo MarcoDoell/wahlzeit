@@ -2,7 +2,7 @@ package org.wahlzeit.model;
 
 public class Car {
 
-    private String brand = "BMW";
+    private String brand;
 
     public Car(String brand) {
         this.brand = brand;
