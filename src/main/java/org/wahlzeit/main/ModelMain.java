@@ -47,7 +47,8 @@ public abstract class ModelMain extends AbstractMain {
  		loadGlobals();
 
 		PhotoFactory.initialize();
-		CarPhotoFactory.initialize();
+		//Dont think I need that
+		//CarPhotoFactory.initialize();
 	}
 	
 	/**
