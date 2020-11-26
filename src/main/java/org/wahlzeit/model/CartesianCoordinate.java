@@ -58,21 +58,6 @@ public class CartesianCoordinate extends AbstractCoordinate {
      *
      * compares two coordinates and returns true when both coordinates are equal
      */
-    boolean isEqual(Coordinate coordinate) {
-        final double THRESHOLD = .0001;
-
-        if(coordinate == null)
-            throw new NullPointerException("Provided coordinate parameter is null");
-
-        return Math.abs(coordinate.getX() - this.getX()) < THRESHOLD &&
-                Math.abs(coordinate.getY() - this.getY()) <THRESHOLD &&
-                Math.abs(coordinate.getZ() - this.getZ()) < THRESHOLD;
-    }
-
-    /**
-     *
-     * compares two coordinates and returns true when both coordinates are equal
-     */
     @Override
     public boolean equals(Object o) {
         if(o instanceof Coordinate)

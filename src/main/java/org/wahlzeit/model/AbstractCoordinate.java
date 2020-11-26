@@ -1,5 +1,7 @@
 package org.wahlzeit.model;
 
+import java.util.Objects;
+
 public abstract class AbstractCoordinate implements Coordinate {
 
     @Override
@@ -49,12 +51,39 @@ public abstract class AbstractCoordinate implements Coordinate {
     @Override
     public Double getCentralAngle(Coordinate c) {
         assertIsNonNullArgument(c);
-        return null;
+
+
+        SphericCoordinate thisAsSpheric = this.asSphericCoordinate();
+        SphericCoordinate cAsSpheric = c.asSphericCoordinate();
+
+        double dtheta = Math.abs(thisAsSpheric.getTheta() - cAsSpheric.getTheta());
+
+        double cos = Math.sin(thisAsSpheric.getPhi()) * Math.sin(cAsSpheric.getPhi()) + Math.cos(thisAsSpheric.getPhi()) * Math.cos(cAsSpheric.getPhi()) * Math.cos(dtheta);
+
+        double result = Math.acos(cos);
+
+        if(Double.isNaN(result))
+            throw new ArithmeticException("Calculation returnd a NaN result");
+
+        return result;
     }
 
+    /**
+     *
+     * compares two coordinates and returns true when both coordinates are equal
+     */
     @Override
     public boolean isEqual(Coordinate c) {
-        return false;
+        assertIsNonNullArgument(c);
+
+        CartesianCoordinate thisAsCartesian = this.asCartesianCoordinate();
+        CartesianCoordinate cAsCartesian = c.asCartesianCoordinate();
+
+        final double THRESHOLD = .0001;
+
+        return Math.abs(cAsCartesian.getX() - thisAsCartesian.getX()) < THRESHOLD &&
+                Math.abs(cAsCartesian.getY() - thisAsCartesian.getY()) <THRESHOLD &&
+                Math.abs(cAsCartesian.getZ() - thisAsCartesian.getZ()) < THRESHOLD;
     }
 
     protected void assertIsNonNullArgument(Object c) {
