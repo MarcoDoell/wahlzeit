@@ -4,7 +4,7 @@ public abstract class AbstractCoordinate implements Coordinate {
 
     @Override
     public CartesianCoordinate asCartesianCoordinate() {
-        return null;
+        return doAsCartesianCoordinate();
     }
 
     /**
@@ -38,7 +38,7 @@ public abstract class AbstractCoordinate implements Coordinate {
 
     @Override
     public SphericCoordinate asSphericCoordinate() {
-        return null;
+        return doAsSphericCoordinate();
     }
 
     /**
