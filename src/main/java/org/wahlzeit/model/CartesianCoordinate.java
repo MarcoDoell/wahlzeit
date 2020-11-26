@@ -30,22 +30,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
         this.z = Double.parseDouble(coordSplit[2]);
     }
 
-    /**
-     *
-     * Calculate the distance between 2 coordinates
-     */
-    double getDistance(Coordinate coordinate) {
-        if(coordinate == null)
-            throw new NullPointerException("Provided coordinate parameter is null");
 
-        double result = Math.sqrt(
-                Math.pow((coordinate.getX() - this.getX()), 2) + Math.pow((coordinate.getY() - this.getY()), 2) + Math.pow((coordinate.getZ() - this.getZ()), 2));
-
-        if(result == Double.NaN)
-            throw new RuntimeException("Calculations went wrong");
-
-        return result;
-    }
 
     @Override
     public CartesianCoordinate doAsCartesianCoordinate() {

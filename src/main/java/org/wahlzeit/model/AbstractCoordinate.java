@@ -13,10 +13,28 @@ public abstract class AbstractCoordinate implements Coordinate {
      */
     public abstract CartesianCoordinate doAsCartesianCoordinate();
 
+    /**
+     *
+     * Calculate the distance between 2 coordinates
+     */
     @Override
     public Double getCartesianDistance(Coordinate c) {
-        return null;
+        if(c == null)
+            throw new NullPointerException("Provided coordinate parameter is null");
+
+        CartesianCoordinate thisCoordAsCart = this.asCartesianCoordinate();
+        CartesianCoordinate cAsCart = c.asCartesianCoordinate();
+
+        // Calculation
+        double result = Math.sqrt(
+                Math.pow((cAsCart.getX() - thisCoordAsCart.getX()), 2) + Math.pow((cAsCart.getY() - thisCoordAsCart.getY()), 2) + Math.pow((cAsCart.getZ() - thisCoordAsCart.getZ()), 2));
+
+        if(result == Double.NaN)
+            throw new RuntimeException("Calculations went wrong");
+
+        return result;
     }
+
 
     @Override
     public SphericCoordinate asSphericCoordinate() {
