@@ -19,8 +19,7 @@ public abstract class AbstractCoordinate implements Coordinate {
      */
     @Override
     public Double getCartesianDistance(Coordinate c) {
-        if(c == null)
-            throw new NullPointerException("Provided coordinate parameter is null");
+        assertIsNonNullArgument(c);
 
         CartesianCoordinate thisCoordAsCart = this.asCartesianCoordinate();
         CartesianCoordinate cAsCart = c.asCartesianCoordinate();
@@ -49,11 +48,17 @@ public abstract class AbstractCoordinate implements Coordinate {
 
     @Override
     public Double getCentralAngle(Coordinate c) {
+        assertIsNonNullArgument(c);
         return null;
     }
 
     @Override
     public boolean isEqual(Coordinate c) {
         return false;
+    }
+
+    protected void assertIsNonNullArgument(Object c) {
+        if(c == null)
+            throw new IllegalArgumentException("Argument must not be null!");
     }
 }
