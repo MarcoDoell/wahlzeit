@@ -42,6 +42,7 @@ public class Location {
      */
     @Override
     public String toString() {
-        return coordinate.getX() + "/" + coordinate.getY() + "/" + coordinate.getZ();
+        CartesianCoordinate tempoCartesianCoordinate = this.coordinate.asCartesianCoordinate();
+        return tempoCartesianCoordinate.getX() + "/" + tempoCartesianCoordinate.getY() + "/" + tempoCartesianCoordinate.getZ();
     }
 }

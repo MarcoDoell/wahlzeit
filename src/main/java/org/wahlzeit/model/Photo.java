@@ -103,7 +103,7 @@ public class Photo extends DataObject {
 	/**
 	 *
 	 */
-	protected Location location = new Location(new Coordinate(Math.random(), Math.random(), Math.random()));
+	protected Location location = new Location(new CartesianCoordinate(Math.random(), Math.random(), Math.random()));
 	
 	/**
 	 * 
@@ -171,7 +171,7 @@ public class Photo extends DataObject {
 
 		maxPhotoSize = PhotoSize.getFromWidthHeight(width, height);
 
-		location = new Location(new Coordinate(rset.getString("location")));
+		location = new Location(new CartesianCoordinate(rset.getString("location")));
 	}
 	
 	/**

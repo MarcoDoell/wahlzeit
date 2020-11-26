@@ -22,6 +22,15 @@ public class SphericCoordinate extends AbstractCoordinate {
         this.radius = radius;
     }
 
+    /*public SphericCoordinate(String coordinateasString) {
+
+        String[] coordSplit = coordinateasString.split("/");
+
+        this.phi = Double.parseDouble(coordSplit[0]);
+        this.theta = Double.parseDouble(coordSplit[1]);
+        this.radius = Double.parseDouble(coordSplit[2]);
+    }*/
+
     /**
      *
      * @methodtype get
@@ -70,4 +79,17 @@ public class SphericCoordinate extends AbstractCoordinate {
         this.phi = phi;
     }
 
+    @Override
+    public CartesianCoordinate doAsCartesianCoordinate() {
+        double x = this.radius * Math.sin(this.phi) * Math.cos(this.theta);
+        double y = this.radius * Math.sin(this.phi) * Math.sin(this.theta);
+        double z = this.radius * Math.cos(this.phi);
+
+        return new CartesianCoordinate(x, y, z);
+    }
+
+    @Override
+    public SphericCoordinate doAsSphericCoordinate() {
+        return this;
+    }
 }
