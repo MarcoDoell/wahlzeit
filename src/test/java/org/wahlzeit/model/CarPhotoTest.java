@@ -19,7 +19,7 @@ public class CarPhotoTest {
         ResultSet resultSet = Mockito.mock(ResultSet.class);
 
         CarPhoto photo = new CarPhoto();
-        photo.setLocation(new Location(new Coordinate(1,2,3)));
+        photo.setLocation(new Location(new CartesianCoordinate(1,2,3)));
         photo.setOwnerEmailAddress(EmailAddress.getFromString("wahlzeit@wahlzeit.de"));
         photo.setOwnerHomePage(new URL("http://www.wahlzeit.de"));
 

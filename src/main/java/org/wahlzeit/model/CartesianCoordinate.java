@@ -40,12 +40,16 @@ public class CartesianCoordinate extends AbstractCoordinate {
     @Override
     public SphericCoordinate doAsSphericCoordinate() {
         double radius = Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2) + Math.pow(this.z, 2));
-        double phi = Math.acos(
-                this.z / radius
-        );
-        double theta = Math.atan(
-                this.y / this.x
-        );
+
+        double theta = Math.PI/2 - Math.atan(z / (Math.sqrt(Math.pow(x, 2)) + Math.pow(y, 2)));
+
+
+        double phi;
+        if(y >= 0)
+            phi = Math.acos(x / (Math.sqrt(Math.pow(x, 2)) + Math.pow(y, 2)));
+
+        else
+            phi = 2 * Math.PI - Math.acos(x / (Math.sqrt(Math.pow(x, 2)) + Math.pow(y, 2)));
 
         // in case x is 0
         if(Double.isNaN(theta))

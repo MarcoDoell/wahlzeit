@@ -1,6 +1,8 @@
 package org.wahlzeit.model;
 
 
+import java.util.Objects;
+
 /**
  *
  * Sperhic Coordinate class
@@ -81,9 +83,9 @@ public class SphericCoordinate extends AbstractCoordinate {
 
     @Override
     public CartesianCoordinate doAsCartesianCoordinate() {
-        double x = this.radius * Math.sin(this.phi) * Math.cos(this.theta);
-        double y = this.radius * Math.sin(this.phi) * Math.sin(this.theta);
-        double z = this.radius * Math.cos(this.phi);
+        double x = this.radius * Math.sin(this.theta) * Math.cos(this.phi);
+        double y = this.radius * Math.sin(this.theta) * Math.sin(this.phi);
+        double z = this.radius * Math.cos(this.theta);
 
         return new CartesianCoordinate(x, y, z);
     }
@@ -91,5 +93,20 @@ public class SphericCoordinate extends AbstractCoordinate {
     @Override
     public SphericCoordinate doAsSphericCoordinate() {
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SphericCoordinate that = (SphericCoordinate) o;
+        return Objects.equals(phi, that.phi) &&
+                Objects.equals(theta, that.theta) &&
+                Objects.equals(radius, that.radius);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(phi, theta, radius);
     }
 }

@@ -31,6 +31,7 @@ CREATE TABLE photos (
 	no_votes integer,
 	creation_time bigint,
 	location text,
+	coordinateidentifier text,
 	brand text
 );
 
