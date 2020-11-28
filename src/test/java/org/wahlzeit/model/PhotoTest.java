@@ -70,6 +70,5 @@ public class PhotoTest {
         //Assert
         verify(resultSet).updateString("location",photo.location.toString());
         verify(resultSet).updateString("coordinateidentifier","spheric");
-
     }
 }
