@@ -30,8 +30,6 @@ public class CartesianCoordinate extends AbstractCoordinate {
         this.z = Double.parseDouble(coordSplit[2]);
     }
 
-
-
     /**
      *
      *
@@ -40,7 +38,6 @@ public class CartesianCoordinate extends AbstractCoordinate {
     public CartesianCoordinate doAsCartesianCoordinate() {
         return this;
     }
-
 
     /**
      *

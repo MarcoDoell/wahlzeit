@@ -38,6 +38,7 @@ public class CarPhotoTest {
         Mockito.when(resultSet.getString("location")).thenReturn("1.0/2.0/3.0");
         Mockito.when(resultSet.getString("owner_email_address")).thenReturn("wahlzeit@wahlzeit.de");
         Mockito.when(resultSet.getString("owner_home_page")).thenReturn("http://www.wahlzeit.de");
+        Mockito.when(resultSet.getString("coordinateidentifier")).thenReturn("spheric");
 
         CarPhoto photo = new CarPhoto();
 
