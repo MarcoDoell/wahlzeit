@@ -53,6 +53,5 @@ public class Location {
             SphericCoordinate tempoSphericCoordinate = this.coordinate.asSphericCoordinate();
             return tempoSphericCoordinate.getPhi() + "/" + tempoSphericCoordinate.getRadius() + "/" + tempoSphericCoordinate.getTheta();
         }
-
     }
 }
