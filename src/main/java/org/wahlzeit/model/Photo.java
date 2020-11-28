@@ -103,7 +103,9 @@ public class Photo extends DataObject {
 	/**
 	 *
 	 */
-	protected Location location = new Location(new CartesianCoordinate(Math.random(), Math.random(), Math.random()));
+	protected Location location = new Location(new SphericCoordinate(Math.random(), Math.random(), Math.random()));
+	protected final String CARTESIAN_IDENTIFIER = "cartesian";
+	protected final String SPHERIC_IDENTIFIER = "spheric";
 	
 	/**
 	 * 
@@ -194,11 +196,11 @@ public class Photo extends DataObject {
 		rset.updateLong("creation_time", creationTime);
 		if(location.getCoordinate() instanceof CartesianCoordinate) {
 			rset.updateString("location", String.valueOf(location));
-			rset.updateString("coordinateidentifier", "spheric");
+			rset.updateString("coordinateidentifier", CARTESIAN_IDENTIFIER);
 		}
 		else {
 			rset.updateString("location", String.valueOf(location));
-			rset.updateString("coordinateidentifier", "cartesian");
+			rset.updateString("coordinateidentifier", SPHERIC_IDENTIFIER);
 		}
 	}
 
