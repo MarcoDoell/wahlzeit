@@ -10,7 +10,7 @@ import static org.junit.Assert.assertNotNull;
  */
 public class LocationTest {
 
-    /*@Test(expected = IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testConstructorWithNullParameter() {
         //Act
         Location location = new Location(null);
@@ -48,5 +48,5 @@ public class LocationTest {
 
         //Assert
         assertEquals(locationToString,"1.0/2.0/3.0");
-    }*/
+    }
 }

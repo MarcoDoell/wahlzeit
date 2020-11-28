@@ -6,18 +6,14 @@ import static org.junit.Assert.assertEquals;
 
 public class AbstractCoordinateTest {
 
+
     @Test
-    public void testGetCartesianDistance() {
+    public void testGetCentralAngleThrowException() {
 
     }
 
     @Test
-    public void testisEqual() {
-
-    }
-
-    @Test
-    public void testGetCentralAngle() {
+    public void testGetCentralAngleWorks() {
 
     }
     @Test

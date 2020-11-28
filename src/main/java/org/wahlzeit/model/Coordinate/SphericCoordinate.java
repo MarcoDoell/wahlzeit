@@ -24,6 +24,10 @@ public class SphericCoordinate extends AbstractCoordinate {
         this.radius = radius;
     }
 
+    /**
+     *
+     * @methodtype constructor
+     */
     public SphericCoordinate(String coordinateasString) {
 
         String[] coordSplit = coordinateasString.split("/");
@@ -81,6 +85,11 @@ public class SphericCoordinate extends AbstractCoordinate {
         this.phi = phi;
     }
 
+
+    /**
+     *
+     * Method that converts the Spheric Coordinate into a Cartesian Coordinate
+     */
     @Override
     public CartesianCoordinate doAsCartesianCoordinate() {
         double x = this.radius * Math.sin(this.theta) * Math.cos(this.phi);
@@ -90,11 +99,19 @@ public class SphericCoordinate extends AbstractCoordinate {
         return new CartesianCoordinate(x, y, z);
     }
 
+    /**
+     *
+     *
+     */
     @Override
     public SphericCoordinate doAsSphericCoordinate() {
         return this;
     }
 
+    /**
+     *
+     *
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -105,6 +122,10 @@ public class SphericCoordinate extends AbstractCoordinate {
                 Objects.equals(radius, that.radius);
     }
 
+    /**
+     *
+     *
+     */
     @Override
     public int hashCode() {
         return Objects.hash(phi, theta, radius);

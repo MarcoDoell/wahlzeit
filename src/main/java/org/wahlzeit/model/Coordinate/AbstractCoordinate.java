@@ -35,6 +35,10 @@ public abstract class AbstractCoordinate implements Coordinate {
     }
 
 
+    /**
+     *
+     * Converts Cartesian into Spheric
+     */
     @Override
     public SphericCoordinate asSphericCoordinate() {
         return doAsSphericCoordinate();
@@ -42,10 +46,15 @@ public abstract class AbstractCoordinate implements Coordinate {
 
     /**
      *
-     * @methodtype helper
+     * @methodtype helper Method that gets implemented in the Classes CartesianCoordinate and SphericCoordinate
      */
     public abstract SphericCoordinate doAsSphericCoordinate();
 
+
+    /**
+     *
+     * Calculate the central Angle
+     */
     @Override
     public Double getCentralAngle(Coordinate c) {
         assertIsNonNullArgument(c);
@@ -84,6 +93,10 @@ public abstract class AbstractCoordinate implements Coordinate {
                 Math.abs(cAsCartesian.getZ() - thisAsCartesian.getZ()) < THRESHOLD;
     }
 
+    /**
+     *
+     * Helper Method for Checking if the Arguments provided are null
+     */
     protected void assertIsNonNullArgument(Object c) {
         if(c == null)
             throw new IllegalArgumentException("Argument must not be null!");

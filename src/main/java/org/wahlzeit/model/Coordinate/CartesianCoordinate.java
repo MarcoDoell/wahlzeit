@@ -32,11 +32,20 @@ public class CartesianCoordinate extends AbstractCoordinate {
 
 
 
+    /**
+     *
+     *
+     */
     @Override
     public CartesianCoordinate doAsCartesianCoordinate() {
         return this;
     }
 
+
+    /**
+     *
+     * Method that converts the Cartesian Coordinate into a Spheric Coordinate
+     */
     @Override
     public SphericCoordinate doAsSphericCoordinate() {
         double radius = Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2) + Math.pow(this.z, 2));
