@@ -1,4 +1,4 @@
-package org.wahlzeit.model;
+package org.wahlzeit.model.Coordinate;
 
 import org.junit.Test;
 import org.wahlzeit.model.Coordinate.CartesianCoordinate;
