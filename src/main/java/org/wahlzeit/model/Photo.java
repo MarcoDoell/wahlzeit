@@ -173,7 +173,11 @@ public class Photo extends DataObject {
 
 		maxPhotoSize = PhotoSize.getFromWidthHeight(width, height);
 
-		location = new Location(new CartesianCoordinate(rset.getString("location")));
+		String identifier = rset.getString("coordinateidentifier");
+		if(identifier.equals(SPHERIC_IDENTIFIER))
+			location = new Location(new SphericCoordinate(rset.getString("location")));
+		else
+			location = new Location(new CartesianCoordinate(rset.getString("location")));
 	}
 	
 	/**

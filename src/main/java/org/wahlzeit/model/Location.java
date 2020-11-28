@@ -42,7 +42,13 @@ public class Location {
      */
     @Override
     public String toString() {
-        CartesianCoordinate tempoCartesianCoordinate = this.coordinate.asCartesianCoordinate();
-        return tempoCartesianCoordinate.getX() + "/" + tempoCartesianCoordinate.getY() + "/" + tempoCartesianCoordinate.getZ();
+        if(this.coordinate instanceof CartesianCoordinate) {
+            CartesianCoordinate tempoCartesianCoordinate = this.coordinate.asCartesianCoordinate();
+            return tempoCartesianCoordinate.getX() + "/" + tempoCartesianCoordinate.getY() + "/" + tempoCartesianCoordinate.getZ();
+        } else {
+            SphericCoordinate tempoSphericCoordinate = this.coordinate.asSphericCoordinate();
+            return tempoSphericCoordinate.getPhi() + "/" + tempoSphericCoordinate.getRadius() + "/" + tempoSphericCoordinate.getTheta();
+        }
+
     }
 }

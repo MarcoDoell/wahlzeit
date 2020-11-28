@@ -24,14 +24,14 @@ public class SphericCoordinate extends AbstractCoordinate {
         this.radius = radius;
     }
 
-    /*public SphericCoordinate(String coordinateasString) {
+    public SphericCoordinate(String coordinateasString) {
 
         String[] coordSplit = coordinateasString.split("/");
 
         this.phi = Double.parseDouble(coordSplit[0]);
-        this.theta = Double.parseDouble(coordSplit[1]);
-        this.radius = Double.parseDouble(coordSplit[2]);
-    }*/
+        this.radius = Double.parseDouble(coordSplit[1]);
+        this.theta = Double.parseDouble(coordSplit[2]);
+    }
 
     /**
      *
