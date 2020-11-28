@@ -1,5 +1,9 @@
 package org.wahlzeit.model;
 
+import org.wahlzeit.model.Coordinate.CartesianCoordinate;
+import org.wahlzeit.model.Coordinate.Coordinate;
+import org.wahlzeit.model.Coordinate.SphericCoordinate;
+
 /**
  * Location class
  */

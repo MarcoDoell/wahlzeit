@@ -2,6 +2,7 @@ package org.wahlzeit.model;
 
 import org.junit.Test;
 import org.mockito.Mockito;
+import org.wahlzeit.model.Coordinate.CartesianCoordinate;
 import org.wahlzeit.services.EmailAddress;
 
 import java.net.MalformedURLException;

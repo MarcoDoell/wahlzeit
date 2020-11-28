@@ -23,6 +23,8 @@ package org.wahlzeit.model;
 import java.sql.*;
 import java.net.*;
 
+import org.wahlzeit.model.Coordinate.CartesianCoordinate;
+import org.wahlzeit.model.Coordinate.SphericCoordinate;
 import org.wahlzeit.services.*;
 import org.wahlzeit.utils.*;
 
