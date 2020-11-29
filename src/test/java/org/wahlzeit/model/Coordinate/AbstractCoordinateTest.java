@@ -7,14 +7,26 @@ import static org.junit.Assert.assertEquals;
 public class AbstractCoordinateTest {
 
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void testGetCentralAngleThrowException() {
+        //Act
+        Coordinate coord1 = new SphericCoordinate(1.0,1.0,1.0);
 
+        //Arrange
+        double result = coord1.getCentralAngle(null);
     }
 
     @Test
     public void testGetCentralAngleWorks() {
+        //Act
+        Coordinate coord1 = new SphericCoordinate(1.0,1.0,1.0);
+        Coordinate coord2 = new SphericCoordinate(0.0,0.0,0.0);
 
+        //Arrange
+        double result = coord1.getCentralAngle(coord2);
+
+        //Assert
+        assertEquals(1.2745557823062943,result,0.0001);
     }
     @Test
     public void testGetDistanceWith200to100() {
