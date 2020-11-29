@@ -1,22 +1,16 @@
 package org.wahlzeit.model.Coordinate;
 
-public abstract class AbstractCoordinate implements Coordinate {
+public abstract class AbstractCoordinate {//implements Coordinate {
 
+    /*
     @Override
     public CartesianCoordinate asCartesianCoordinate() {
         return doAsCartesianCoordinate();
     }
 
-    /**
-     *
-     * @methodtype helper
-     */
     public abstract CartesianCoordinate doAsCartesianCoordinate();
 
-    /**
-     *
-     * Calculate the distance between 2 coordinates
-     */
+
     @Override
     public Double getCartesianDistance(Coordinate c) {
         assertIsNonNullArgument(c);
@@ -35,26 +29,15 @@ public abstract class AbstractCoordinate implements Coordinate {
     }
 
 
-    /**
-     *
-     * Converts Cartesian into Spheric
-     */
     @Override
     public SphericCoordinate asSphericCoordinate() {
         return doAsSphericCoordinate();
     }
 
-    /**
-     *
-     * @methodtype helper Method that gets implemented in the Classes CartesianCoordinate and SphericCoordinate
-     */
+
     public abstract SphericCoordinate doAsSphericCoordinate();
 
 
-    /**
-     *
-     * Calculate the central Angle
-     */
     @Override
     public Double getCentralAngle(Coordinate c) {
         assertIsNonNullArgument(c);
@@ -75,10 +58,7 @@ public abstract class AbstractCoordinate implements Coordinate {
         return result;
     }
 
-    /**
-     *
-     * compares two coordinates and returns true when both coordinates are equal
-     */
+
     @Override
     public boolean isEqual(Coordinate c) {
         assertIsNonNullArgument(c);
@@ -93,12 +73,11 @@ public abstract class AbstractCoordinate implements Coordinate {
                 Math.abs(cAsCartesian.getZ() - thisAsCartesian.getZ()) < THRESHOLD;
     }
 
-    /**
-     *
-     * Helper Method for Checking if the Arguments provided are null
-     */
+
     protected void assertIsNonNullArgument(Object c) {
         if(c == null)
             throw new IllegalArgumentException("Argument must not be null!");
     }
+
+    */
 }
