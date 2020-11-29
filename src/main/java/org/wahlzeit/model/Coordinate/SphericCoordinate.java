@@ -120,16 +120,29 @@ public class SphericCoordinate implements Coordinate {
                 Objects.equals(radius, that.radius);
     }
 
+    /**
+     *
+     * hashCode for coordinates
+     */
     @Override
     public int hashCode() {
         return Objects.hash(phi, theta, radius);
     }
 
+
+    /**
+     *
+     * convert to Cartesian Coordinate
+     */
     @Override
     public CartesianCoordinate asCartesianCoordinate() {
         return doAsCartesianCoordinate();
     }
 
+    /**
+     *
+     * calculates the cartesian Distance of 2 Coordinates
+     */
     @Override
     public Double getCartesianDistance(Coordinate c) {
         assertIsNonNullArgument(c);
@@ -147,11 +160,19 @@ public class SphericCoordinate implements Coordinate {
         return result;
     }
 
+    /**
+     *
+     * convert to Spheric Coordinate
+     */
     @Override
     public SphericCoordinate asSphericCoordinate() {
         return doAsSphericCoordinate();
     }
 
+    /**
+     *
+     * calculate the central Angle
+     */
     @Override
     public Double getCentralAngle(Coordinate c) {
         assertIsNonNullArgument(c);
@@ -172,6 +193,10 @@ public class SphericCoordinate implements Coordinate {
         return result;
     }
 
+    /**
+     *
+     *
+     */
     @Override
     public boolean isEqual(Coordinate c) {
         assertIsNonNullArgument(c);
@@ -186,6 +211,11 @@ public class SphericCoordinate implements Coordinate {
                 Math.abs(cAsCartesian.getZ() - thisAsCartesian.getZ()) < THRESHOLD;
     }
 
+
+    /**
+     *
+     * helper Method to check if the Arguments of a method are null
+     */
     protected void assertIsNonNullArgument(Object c) {
         if(c == null)
             throw new IllegalArgumentException("Argument must not be null!");
