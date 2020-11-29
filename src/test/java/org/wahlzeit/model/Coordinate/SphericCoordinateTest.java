@@ -128,7 +128,7 @@ public class SphericCoordinateTest {
     public void testisEqualDoesntWorks() {
         //Act
         Coordinate coord1 = new SphericCoordinate(3.12312312351,0.0,0.0);
-        Coordinate coord2 = new SphericCoordinate(3.12352312351,0.0,0.0);
+        Coordinate coord2 = new CartesianCoordinate(3.12352312351,0.0,0.0);
 
         //Arrange
         boolean result = coord1.isEqual(coord2);
