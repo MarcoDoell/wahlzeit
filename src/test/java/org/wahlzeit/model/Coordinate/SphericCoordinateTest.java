@@ -82,14 +82,27 @@ public class SphericCoordinateTest {
     @Test
     public void testGetDistanceWith200to100() {
         //Act
-        Coordinate coord1 = new SphericCoordinate(2.0,0.0,0.0);
-        Coordinate coord2 = new SphericCoordinate(1.0,0.0,0.0);
+        Coordinate coord1 = new SphericCoordinate(2,0,0);
+        Coordinate coord2 = new SphericCoordinate(1,0,0);
 
         //Arrange
         double result = coord1.getCartesianDistance(coord2);
 
         //Assert
-        assertEquals(1,result,0.1);
+        assertEquals(0,result,0.1);
+    }
+
+    @Test
+    public void testGetDistanceWithPi() {
+        //Act
+        Coordinate coord1 = new SphericCoordinate(1,0,Math.PI/2);
+        Coordinate coord2 = new SphericCoordinate(1,0,0);
+
+        //Arrange
+        double result = coord1.getCartesianDistance(coord2);
+
+        //Assert
+        assertEquals(Math.PI/2,result,0.1);
     }
 
     @Test(expected = IllegalArgumentException.class)

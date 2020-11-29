@@ -10,15 +10,15 @@ import java.util.Objects;
 public class SphericCoordinate implements Coordinate {
 
 
-    private Double phi;
-    private Double theta;
-    private Double radius;
+    private double phi;
+    private double theta;
+    private double radius;
 
     /**
      *
      * @methodtype constructor
      */
-    public SphericCoordinate(Double phi, Double theta, Double radius){
+    public SphericCoordinate(double phi, double theta, double radius){
         this.phi = phi;
         this.theta = theta;
         this.radius = radius;
