@@ -1,8 +1,8 @@
 package org.wahlzeit.model.Coordinate;
 
-public abstract class AbstractCoordinate {//implements Coordinate {
+public abstract class AbstractCoordinate implements Coordinate {
 
-    /*
+
     @Override
     public CartesianCoordinate asCartesianCoordinate() {
         return doAsCartesianCoordinate();
@@ -78,6 +78,4 @@ public abstract class AbstractCoordinate {//implements Coordinate {
         if(c == null)
             throw new IllegalArgumentException("Argument must not be null!");
     }
-
-    */
 }

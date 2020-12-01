@@ -2,7 +2,7 @@ package org.wahlzeit.model.Coordinate;
 
 import java.util.Objects;
 
-public class CartesianCoordinate implements Coordinate {
+public class CartesianCoordinate extends AbstractCoordinate {
     private double x;
     private double y;
     private double z;
@@ -128,97 +128,5 @@ public class CartesianCoordinate implements Coordinate {
      */
     public void setZ(double z) {
         this.z = z;
-    }
-
-    /**
-     *
-     * convert to Cartesian Coordinate
-     */
-    @Override
-    public CartesianCoordinate asCartesianCoordinate() {
-        return doAsCartesianCoordinate();
-    }
-
-    /**
-     *
-     * calculates the cartesian Distance of 2 Coordinates
-     */
-    @Override
-    public Double getCartesianDistance(Coordinate c) {
-        assertIsNonNullArgument(c);
-
-        CartesianCoordinate thisCoordAsCart = this.asCartesianCoordinate();
-        CartesianCoordinate cAsCart = c.asCartesianCoordinate();
-
-        // Calculation
-        double result = Math.sqrt(
-                Math.pow((cAsCart.getX() - thisCoordAsCart.getX()), 2) +
-                Math.pow((cAsCart.getY() - thisCoordAsCart.getY()), 2) +
-                Math.pow((cAsCart.getZ() - thisCoordAsCart.getZ()), 2));
-
-        if(result == Double.NaN)
-            throw new RuntimeException("Calculations went wrong");
-
-        return result;
-    }
-
-    /**
-     *
-     * convert to Spheric Coordinate
-     */
-    @Override
-    public SphericCoordinate asSphericCoordinate() {
-        return doAsSphericCoordinate();
-    }
-
-    /**
-     *
-     * calculate the central Angle
-     */
-    @Override
-    public Double getCentralAngle(Coordinate c) {
-        assertIsNonNullArgument(c);
-
-
-        SphericCoordinate thisAsSpheric = this.asSphericCoordinate();
-        SphericCoordinate cAsSpheric = c.asSphericCoordinate();
-
-        double dtheta = Math.abs(thisAsSpheric.getTheta() - cAsSpheric.getTheta());
-
-        double cos = Math.sin(thisAsSpheric.getPhi()) * Math.sin(cAsSpheric.getPhi()) + Math.cos(thisAsSpheric.getPhi()) * Math.cos(cAsSpheric.getPhi()) * Math.cos(dtheta);
-
-        double result = Math.acos(cos);
-
-        if(Double.isNaN(result))
-            throw new ArithmeticException("Calculation returnd a NaN result");
-
-        return result;
-    }
-
-    /**
-     *
-     *
-     */
-    @Override
-    public boolean isEqual(Coordinate c) {
-        assertIsNonNullArgument(c);
-
-        CartesianCoordinate thisAsCartesian = this.asCartesianCoordinate();
-        CartesianCoordinate cAsCartesian = c.asCartesianCoordinate();
-
-        final double THRESHOLD = .0001;
-
-        return Math.abs(cAsCartesian.getX() - thisAsCartesian.getX()) < THRESHOLD &&
-                Math.abs(cAsCartesian.getY() - thisAsCartesian.getY()) <THRESHOLD &&
-                Math.abs(cAsCartesian.getZ() - thisAsCartesian.getZ()) < THRESHOLD;
-    }
-
-    /**
-     *
-     * helper Method to check if the Arguments of a method are null
-     */
-    protected void assertIsNonNullArgument(Object c) {
-        if(c == null)
-            throw new IllegalArgumentException("Argument must not be null!");
     }
 }
