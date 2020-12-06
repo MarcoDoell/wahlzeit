@@ -80,7 +80,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
      * hashCode for Cartesian coordinates
      */
     @Override
-    public int hashCode() {
+    public int doHashCode() {
         return Objects.hash(x, y, z);
     }
 

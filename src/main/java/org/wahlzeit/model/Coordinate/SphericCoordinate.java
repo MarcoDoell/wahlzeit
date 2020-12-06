@@ -124,7 +124,7 @@ public class SphericCoordinate extends AbstractCoordinate {
      * hashCode for coordinates
      */
     @Override
-    public int hashCode() {
+    public int doHashCode() {
         return Objects.hash(phi, theta, radius);
     }
 }

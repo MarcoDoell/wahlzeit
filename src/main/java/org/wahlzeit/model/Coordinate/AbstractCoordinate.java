@@ -37,6 +37,12 @@ public abstract class AbstractCoordinate implements Coordinate {
 
     public abstract SphericCoordinate doAsSphericCoordinate();
 
+    @Override
+    public int hashCode() {
+        return doHashCode();
+    }
+    public abstract int doHashCode();
+
 
     @Override
     public Double getCentralAngle(Coordinate c) {
