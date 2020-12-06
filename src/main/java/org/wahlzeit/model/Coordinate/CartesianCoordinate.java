@@ -70,14 +70,14 @@ public class CartesianCoordinate extends AbstractCoordinate {
      */
     @Override
     public boolean equals(Object o) {
-        if(o instanceof Coordinate)
-            return this.isEqual((Coordinate) o);
-        return false;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        return this.isEqual((Coordinate)o);
     }
 
     /**
      *
-     * hashCode for coordinates
+     * hashCode for Cartesian coordinates
      */
     @Override
     public int hashCode() {

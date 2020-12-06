@@ -116,10 +116,7 @@ public class SphericCoordinate extends AbstractCoordinate {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SphericCoordinate that = (SphericCoordinate) o;
-        return Objects.equals(phi, that.phi) &&
-                Objects.equals(theta, that.theta) &&
-                Objects.equals(radius, that.radius);
+        return this.isEqual((Coordinate)o);
     }
 
     /**
