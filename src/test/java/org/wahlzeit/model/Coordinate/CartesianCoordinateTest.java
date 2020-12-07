@@ -6,7 +6,6 @@ import org.wahlzeit.model.Coordinate.Coordinate;
 import org.wahlzeit.model.Coordinate.SphericCoordinate;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 
 public class CartesianCoordinateTest {
@@ -17,9 +16,9 @@ public class CartesianCoordinateTest {
 
         SphericCoordinate sphericCoordinate = coord.asSphericCoordinate();
 
-        assertTrue(sphericCoordinate.getRadius() == 1);
-        assertTrue(sphericCoordinate.getTheta() == Math.PI/2);
-        assertTrue(sphericCoordinate.getPhi() == Math.PI/2);
+        assertEquals(1,sphericCoordinate.getRadius(),0.0001);
+        assertEquals(Math.PI/2,(double) sphericCoordinate.getTheta(),0.0001);
+        assertEquals(Math.PI/2,(double) sphericCoordinate.getPhi(),0.0001);
     }
 
 
@@ -29,9 +28,9 @@ public class CartesianCoordinateTest {
 
         SphericCoordinate sphericCoordinate = coord.asSphericCoordinate();
 
-        assertTrue(sphericCoordinate.getRadius() == 1.4142135623730951);
-        assertTrue(sphericCoordinate.getTheta() == 0.7853981633974483);
-        assertTrue(sphericCoordinate.getPhi() == Math.PI/2);
+        assertEquals(1.4142135623730951,(double)sphericCoordinate.getRadius(),0.0001);
+        assertEquals(0.7853981633974483,(double)sphericCoordinate.getTheta(),0.0001);
+        assertEquals(Math.PI/2,(double)sphericCoordinate.getPhi(),0.0001);
     }
 
     @Test
@@ -40,8 +39,8 @@ public class CartesianCoordinateTest {
 
         SphericCoordinate sphericCoordinate = coord.asSphericCoordinate();
 
-        assertTrue(sphericCoordinate.getRadius() == 3.7416573867739413);
-        assertTrue(sphericCoordinate.getTheta() == 1.6614562139956417);
-        assertTrue(sphericCoordinate.getPhi() == 1.387961189801988);
+        assertEquals(3.7416573867739413,sphericCoordinate.getRadius(),0.0001);
+        assertEquals(1.8413460897734695,sphericCoordinate.getTheta(),0.0001);
+        assertEquals(0.982793723247329,sphericCoordinate.getPhi(),0.0001);
     }
 }

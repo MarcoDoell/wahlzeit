@@ -45,21 +45,27 @@ public class CartesianCoordinate extends AbstractCoordinate {
      */
     @Override
     public SphericCoordinate doAsSphericCoordinate() {
-        double radius = Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2) + Math.pow(this.z, 2));
+        double radius = Math.sqrt(Math.pow(this.getX(), 2) + Math.pow(this.getY(), 2) + Math.pow(this.getZ(), 2));
 
-        double theta = Math.PI/2 - Math.atan(z / (Math.sqrt(Math.pow(x, 2)) + Math.pow(y, 2)));
+        if(radius == 0)
+            throw new ArithmeticException("Radius is zero, cant convert to Spheric");
 
+        double theta = Math.acos(this.getZ() / radius);
 
-        double phi;
-        if(y >= 0)
-            phi = Math.acos(x / (Math.sqrt(Math.pow(x, 2)) + Math.pow(y, 2)));
+        double phi = 0;
+        if(this.getX() > 0) {
+            phi = Math.atan(this.getY()/this.getX());
 
-        else
-            phi = 2 * Math.PI - Math.acos(x / (Math.sqrt(Math.pow(x, 2)) + Math.pow(y, 2)));
+        } else if(this.getX() == 0) {
+            phi = Math.signum(this.getY()) * Math.PI / 2;
 
-        // in case x is 0
-        if(Double.isNaN(theta))
-            theta = 0;
+        } else if(this.getX() < 0 && this.getY() >= 0) {
+            phi = Math.atan(this.getY()/this.getX()) + Math.PI;
+
+        } else if(this.getX() < 0 && this.getY() < 0) {
+            phi = Math.atan(this.getY()/this.getX()) - Math.PI;
+        }
+
 
         return new SphericCoordinate(phi, theta, radius);
     }

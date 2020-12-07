@@ -39,7 +39,7 @@ public class AbstractCoordinateTest {
         double result = coord1.getCentralAngle(coord2);
 
         //Assert
-        assertEquals(0.19271344070314136,result,0.0001);
+        assertEquals(0.0,result,0.0001);
     }
     @Test
     public void testGetDistanceWith200to100WithCartesian() {
