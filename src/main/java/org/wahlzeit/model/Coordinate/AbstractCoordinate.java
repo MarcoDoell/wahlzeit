@@ -79,6 +79,17 @@ public abstract class AbstractCoordinate implements Coordinate {
                 Math.abs(cAsCartesian.getZ() - thisAsCartesian.getZ()) < THRESHOLD;
     }
 
+    /**
+     *
+     * compares two coordinates and returns true when both coordinates are equal
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        return this.isEqual((Coordinate)o);
+    }
+
 
     protected void assertIsNonNullArgument(Object c) {
         if(c == null)
