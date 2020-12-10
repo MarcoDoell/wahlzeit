@@ -116,4 +116,13 @@ public class SphericCoordinate extends AbstractCoordinate {
     public int doHashCode() {
         return Objects.hash(phi, theta, radius);
     }
+
+    /**
+     *
+     *
+     */
+    @Override
+    public void assertClassInvariants() {
+        assert !Double.isNaN(this.getPhi()) && !Double.isNaN(this.getTheta()) && !Double.isNaN(this.getRadius());
+    }
 }

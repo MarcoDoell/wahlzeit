@@ -70,7 +70,14 @@ public class CartesianCoordinate extends AbstractCoordinate {
         return new SphericCoordinate(phi, theta, radius);
     }
 
-
+    /**
+     *
+     *
+     */
+    @Override
+    public void assertClassInvariants() {
+        assert !Double.isNaN(this.getX()) && !Double.isNaN(this.getY()) && !Double.isNaN(this.getZ());
+    }
 
     /**
      *

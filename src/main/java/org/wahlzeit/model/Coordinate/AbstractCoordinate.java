@@ -5,6 +5,7 @@ public abstract class AbstractCoordinate implements Coordinate {
 
     @Override
     public CartesianCoordinate asCartesianCoordinate() {
+        
         return doAsCartesianCoordinate();
     }
 
@@ -30,6 +31,7 @@ public abstract class AbstractCoordinate implements Coordinate {
 
     @Override
     public SphericCoordinate asSphericCoordinate() {
+
         return doAsSphericCoordinate();
     }
 
