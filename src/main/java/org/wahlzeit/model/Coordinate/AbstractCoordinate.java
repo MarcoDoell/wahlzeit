@@ -22,8 +22,7 @@ public abstract class AbstractCoordinate implements Coordinate {
         double result = Math.sqrt(
                 Math.pow((cAsCart.getX() - thisCoordAsCart.getX()), 2) + Math.pow((cAsCart.getY() - thisCoordAsCart.getY()), 2) + Math.pow((cAsCart.getZ() - thisCoordAsCart.getZ()), 2));
 
-        if(result == Double.NaN)
-            throw new RuntimeException("Calculations went wrong");
+        assertIsNotNaN(result);
 
         return result;
     }
@@ -58,12 +57,10 @@ public abstract class AbstractCoordinate implements Coordinate {
 
         double result = Math.acos(cos);
 
-        if(Double.isNaN(result))
-            throw new ArithmeticException("Calculation returnd a NaN result");
+        assertIsNotNaN(result);
 
         return result;
     }
-
 
     @Override
     public boolean isEqual(Coordinate c) {
@@ -95,4 +92,11 @@ public abstract class AbstractCoordinate implements Coordinate {
         if(c == null)
             throw new IllegalArgumentException("Argument must not be null!");
     }
+
+    protected void assertIsNotNaN(double result) {
+        if(Double.isNaN(result))
+            throw new ArithmeticException("Calculation return a NaN result");
+    }
+
+    protected abstract void assertClassInvariants();
 }
