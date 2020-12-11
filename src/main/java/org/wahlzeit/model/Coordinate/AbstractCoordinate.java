@@ -42,6 +42,7 @@ public abstract class AbstractCoordinate implements Coordinate {
     public int hashCode() {
         return doHashCode();
     }
+
     public abstract int doHashCode();
 
 
@@ -71,11 +72,18 @@ public abstract class AbstractCoordinate implements Coordinate {
         CartesianCoordinate thisAsCartesian = this.asCartesianCoordinate();
         CartesianCoordinate cAsCartesian = c.asCartesianCoordinate();
 
+        SphericCoordinate thisAsSpheric = this.asSphericCoordinate();
+        SphericCoordinate cAsSpheric = c.asSphericCoordinate();
+
         final double THRESHOLD = .0001;
 
-        return Math.abs(cAsCartesian.getX() - thisAsCartesian.getX()) < THRESHOLD &&
+        return (Math.abs(cAsCartesian.getX() - thisAsCartesian.getX()) < THRESHOLD &&
                 Math.abs(cAsCartesian.getY() - thisAsCartesian.getY()) <THRESHOLD &&
-                Math.abs(cAsCartesian.getZ() - thisAsCartesian.getZ()) < THRESHOLD;
+                Math.abs(cAsCartesian.getZ() - thisAsCartesian.getZ()) < THRESHOLD)
+                ||
+                (Math.abs(thisAsSpheric.getTheta() - cAsSpheric.getTheta()) < THRESHOLD &&
+                Math.abs(thisAsSpheric.getPhi() - cAsSpheric.getPhi())  < THRESHOLD &&
+                Math.abs(thisAsSpheric.getRadius() - cAsSpheric.getRadius())  < THRESHOLD);
     }
 
     /**

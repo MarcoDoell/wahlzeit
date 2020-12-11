@@ -141,8 +141,8 @@ public class AbstractCoordinateTest {
     @Test()
     public void testEqualsWorksWithCartesian() {
         //Act
-        Coordinate coord1 = new CartesianCoordinate(0,0,0);
-        Coordinate coord2 = new CartesianCoordinate(0,0,0);
+        Coordinate coord1 = new CartesianCoordinate(10,12,13);
+        Coordinate coord2 = new CartesianCoordinate(10,12,13);
 
         //Arrange
         boolean result = coord1.equals(coord2);
