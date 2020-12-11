@@ -5,11 +5,42 @@ public abstract class AbstractCoordinate implements Coordinate {
 
     @Override
     public CartesianCoordinate asCartesianCoordinate() {
-        
-        return doAsCartesianCoordinate();
+        assertClassInvariants();
+
+        CartesianCoordinate result = doAsCartesianCoordinate();
+
+        assert result != null;
+
+        assertClassInvariants();
+
+        return result;
     }
 
     public abstract CartesianCoordinate doAsCartesianCoordinate();
+
+
+    @Override
+    public SphericCoordinate asSphericCoordinate() {
+        assertClassInvariants();
+
+        SphericCoordinate result = doAsSphericCoordinate();
+
+        assert result != null;
+
+        assertClassInvariants();
+
+        return result;
+    }
+
+
+    public abstract SphericCoordinate doAsSphericCoordinate();
+
+    @Override
+    public int hashCode() {
+        return doHashCode();
+    }
+
+    public abstract int doHashCode();
 
 
     @Override
@@ -28,28 +59,9 @@ public abstract class AbstractCoordinate implements Coordinate {
         return result;
     }
 
-
-    @Override
-    public SphericCoordinate asSphericCoordinate() {
-
-        return doAsSphericCoordinate();
-    }
-
-
-    public abstract SphericCoordinate doAsSphericCoordinate();
-
-    @Override
-    public int hashCode() {
-        return doHashCode();
-    }
-
-    public abstract int doHashCode();
-
-
     @Override
     public Double getCentralAngle(Coordinate c) {
         assertIsNonNullArgument(c);
-
 
         SphericCoordinate thisAsSpheric = this.asSphericCoordinate();
         SphericCoordinate cAsSpheric = c.asSphericCoordinate();
