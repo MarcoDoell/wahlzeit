@@ -10,6 +10,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
     /**
      *
      * @methodtype constructor
+     * @param x, y ,z Coordinates
      */
     public CartesianCoordinate(double x, double y, double z) {
         this.x = x;
@@ -18,8 +19,9 @@ public class CartesianCoordinate extends AbstractCoordinate {
     }
 
     /**
-     *
+     * Converts the String of Coordinates to X, Y , Z
      * @methodtype constructor
+     * @param Coordinates as String
      */
     public CartesianCoordinate(String coordinateasString) {
 
@@ -42,6 +44,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
     /**
      *
      * Method that converts the Cartesian Coordinate into a Spheric Coordinate
+     * @return SphericCoordinate
      */
     @Override
     public SphericCoordinate doAsSphericCoordinate() {
@@ -72,7 +75,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
 
     /**
      *
-     *
+     * Checks Class Invariants
      */
     @Override
     public void assertClassInvariants() {
@@ -82,6 +85,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
     /**
      *
      * hashCode for Cartesian coordinates
+     * @return int
      */
     @Override
     public int doHashCode() {

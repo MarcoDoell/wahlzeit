@@ -17,6 +17,7 @@ public class SphericCoordinate extends AbstractCoordinate {
     /**
      *
      * @methodtype constructor
+     * @param phi, theta ,radius Coordinates
      */
     public SphericCoordinate(double phi, double theta, double radius){
         this.phi = phi;
@@ -25,8 +26,9 @@ public class SphericCoordinate extends AbstractCoordinate {
     }
 
     /**
-     *
+     * Converts the String of Coordinates to Phi, Radius and Theta
      * @methodtype constructor
+     * @param Coordinates as String
      */
     public SphericCoordinate(String coordinateasString) {
 
@@ -89,6 +91,7 @@ public class SphericCoordinate extends AbstractCoordinate {
     /**
      *
      * Method that converts the Spheric Coordinate into a Cartesian Coordinate
+     * @return CartesianCoordinate
      */
     @Override
     public CartesianCoordinate doAsCartesianCoordinate() {
@@ -111,6 +114,7 @@ public class SphericCoordinate extends AbstractCoordinate {
     /**
      *
      * hashCode for coordinates
+     * @return int
      */
     @Override
     public int doHashCode() {

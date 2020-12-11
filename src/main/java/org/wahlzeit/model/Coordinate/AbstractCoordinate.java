@@ -3,6 +3,10 @@ package org.wahlzeit.model.Coordinate;
 public abstract class AbstractCoordinate implements Coordinate {
 
 
+    /**
+     * Converts any Coordinate type to Cartesian Type
+     * @return CartesianCoordinate
+     */
     @Override
     public CartesianCoordinate asCartesianCoordinate() {
         assertClassInvariants();
@@ -19,6 +23,10 @@ public abstract class AbstractCoordinate implements Coordinate {
     public abstract CartesianCoordinate doAsCartesianCoordinate();
 
 
+    /**
+     * Converts any Coordinate type to Spheric Type
+     * @return SphericCoordinate
+     */
     @Override
     public SphericCoordinate asSphericCoordinate() {
         assertClassInvariants();
@@ -43,6 +51,11 @@ public abstract class AbstractCoordinate implements Coordinate {
     public abstract int doHashCode();
 
 
+    /**
+     * Calculates the Cartesian Distance of any Coordinate type
+     * @param Coordinate
+     * @return Double
+     */
     @Override
     public Double getCartesianDistance(Coordinate c) {
         assertIsNonNullArgument(c);
@@ -59,6 +72,11 @@ public abstract class AbstractCoordinate implements Coordinate {
         return result;
     }
 
+    /**
+     * Calculates the central angle of any Coordinate type
+     * @param Coordinate
+     * @return Double
+     */
     @Override
     public Double getCentralAngle(Coordinate c) {
         assertIsNonNullArgument(c);
@@ -77,6 +95,11 @@ public abstract class AbstractCoordinate implements Coordinate {
         return result;
     }
 
+    /**
+     * Compares the provided Coordinate object with the current object and returns true if equal objects
+     * @param Coordinate
+     * @return boolean
+     */
     @Override
     public boolean isEqual(Coordinate c) {
         assertIsNonNullArgument(c);
@@ -99,8 +122,9 @@ public abstract class AbstractCoordinate implements Coordinate {
     }
 
     /**
-     *
-     * compares two coordinates and returns true when both coordinates are equal
+     * Compares the provided Coordinate object with the current object and returns true if equal objects
+     * @param Object
+     * @return boolean
      */
     @Override
     public boolean equals(Object o) {
@@ -110,11 +134,21 @@ public abstract class AbstractCoordinate implements Coordinate {
     }
 
 
+    /**
+     * assertion method checks if provided parameter is null and throw IllegalArgumentException
+     * @param Object
+     * @methodtype helper
+     */
     protected void assertIsNonNullArgument(Object c) {
         if(c == null)
             throw new IllegalArgumentException("Argument must not be null!");
     }
 
+    /**
+     * assertion method checks if provided parameter is NaN and throws ArithmeticException
+     * @param double
+     * @methodtype helper
+     */
     protected void assertIsNotNaN(double result) {
         if(Double.isNaN(result))
             throw new ArithmeticException("Calculation return a NaN result");
