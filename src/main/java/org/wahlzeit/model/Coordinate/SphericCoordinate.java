@@ -133,5 +133,7 @@ public class SphericCoordinate extends AbstractCoordinate {
     @Override
     public void assertClassInvariants() {
         assert !Double.isNaN(this.getPhi()) && !Double.isNaN(this.getTheta()) && !Double.isNaN(this.getRadius());
+
+        assert this.getPhi() <= (2 * Math.PI) && this.getTheta() <= (2 * Math.PI);
     }
 }
