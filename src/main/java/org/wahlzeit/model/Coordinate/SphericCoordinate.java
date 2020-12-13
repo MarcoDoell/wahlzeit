@@ -23,6 +23,8 @@ public class SphericCoordinate extends AbstractCoordinate {
         this.phi = phi;
         this.theta = theta;
         this.radius = radius;
+
+        assertClassInvariants();
     }
 
     /**
@@ -37,15 +39,15 @@ public class SphericCoordinate extends AbstractCoordinate {
         this.phi = Double.parseDouble(coordSplit[0]);
         this.radius = Double.parseDouble(coordSplit[1]);
         this.theta = Double.parseDouble(coordSplit[2]);
+
+        assertClassInvariants();
     }
 
     /**
      *
      * @methodtype get
      */
-    public Double getTheta() {
-        return theta;
-    }
+    public Double getTheta() { return theta; }
 
     /**
      *
@@ -53,6 +55,7 @@ public class SphericCoordinate extends AbstractCoordinate {
      */
     public void setTheta(Double theta) {
         this.theta = theta;
+        assertClassInvariants();
     }
 
     /**
@@ -69,6 +72,7 @@ public class SphericCoordinate extends AbstractCoordinate {
      */
     public void setRadius(Double radius) {
         this.radius = radius;
+        assertClassInvariants();
     }
 
     /**
@@ -85,6 +89,7 @@ public class SphericCoordinate extends AbstractCoordinate {
      */
     public void setPhi(Double phi) {
         this.phi = phi;
+        assertClassInvariants();
     }
 
 
