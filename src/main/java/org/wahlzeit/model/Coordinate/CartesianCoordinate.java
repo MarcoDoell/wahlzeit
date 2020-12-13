@@ -16,6 +16,8 @@ public class CartesianCoordinate extends AbstractCoordinate {
         this.x = x;
         this.y = y;
         this.z = z;
+
+        assertClassInvariants();
     }
 
     /**
@@ -30,6 +32,8 @@ public class CartesianCoordinate extends AbstractCoordinate {
         this.x = Double.parseDouble(coordSplit[0]);
         this.y = Double.parseDouble(coordSplit[1]);
         this.z = Double.parseDouble(coordSplit[2]);
+
+        assertClassInvariants();
     }
 
     /**
@@ -106,6 +110,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
      */
     public void setX(double x) {
         this.x = x;
+        assertClassInvariants();
     }
 
     /**
@@ -122,6 +127,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
      */
     public void setY(double y) {
         this.y = y;
+        assertClassInvariants();
     }
 
     /**
@@ -138,5 +144,6 @@ public class CartesianCoordinate extends AbstractCoordinate {
      */
     public void setZ(double z) {
         this.z = z;
+        assertClassInvariants();
     }
 }
