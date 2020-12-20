@@ -132,10 +132,35 @@ public class SphericCoordinate extends AbstractCoordinate {
      */
     @Override
     public void assertClassInvariants() {
-        assert !Double.isNaN(this.getPhi()) && !Double.isNaN(this.getTheta()) && !Double.isNaN(this.getRadius());
+        /*assert !Double.isNaN(this.getPhi()) && !Double.isNaN(this.getTheta()) && !Double.isNaN(this.getRadius());
 
         assert this.getPhi() <= (2 * Math.PI) && this.getTheta() <= (2 * Math.PI);
 
-        assert this.getRadius() >= 0;
+        assert this.getRadius() >= 0;*/
+
+        if(Double.isNaN(this.getPhi())) {
+            throw new IllegalStateException("phi must be a number!");
+        }
+        if(Double.isNaN(this.getTheta())) {
+            throw new IllegalStateException("theta must be a number!");
+        }
+        if(Double.isNaN(this.getRadius())) {
+            throw new IllegalStateException("radius must be number!");
+        }
+        if(this.getRadius() < 0) {
+            throw new IllegalStateException("radius must not be smaller than zero!");
+        }
+        if(this.getPhi() > (2 * Math.PI)) {
+            throw new IllegalStateException("phi must not be bigger than 2* Pi!");
+        }
+        if(this.getPhi() < 0) {
+            throw new IllegalStateException("phi must not be smaller than zero");
+        }
+        if(this.getTheta() < 0) {
+            throw new IllegalStateException("theta must not be smaller than zero");
+        }
+        if(this.getPhi() > Math.PI) {
+            throw new IllegalStateException("theta must be smaller than Pi");
+        }
     }
 }
