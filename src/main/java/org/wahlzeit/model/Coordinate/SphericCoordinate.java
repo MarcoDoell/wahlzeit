@@ -99,7 +99,7 @@ public class SphericCoordinate extends AbstractCoordinate {
      * @return CartesianCoordinate
      */
     @Override
-    public CartesianCoordinate doAsCartesianCoordinate() {
+    public CartesianCoordinate doAsCartesianCoordinate() throws IllegalStateException {
         double x = this.radius * Math.sin(this.theta) * Math.cos(this.phi);
         double y = this.radius * Math.sin(this.theta) * Math.sin(this.phi);
         double z = this.radius * Math.cos(this.theta);
@@ -131,13 +131,7 @@ public class SphericCoordinate extends AbstractCoordinate {
      *
      */
     @Override
-    public void assertClassInvariants() {
-        /*assert !Double.isNaN(this.getPhi()) && !Double.isNaN(this.getTheta()) && !Double.isNaN(this.getRadius());
-
-        assert this.getPhi() <= (2 * Math.PI) && this.getTheta() <= (2 * Math.PI);
-
-        assert this.getRadius() >= 0;*/
-
+    public void assertClassInvariants() throws IllegalStateException {
         if(Double.isNaN(this.getPhi())) {
             throw new IllegalStateException("phi must be a number!");
         }
@@ -159,7 +153,7 @@ public class SphericCoordinate extends AbstractCoordinate {
         if(this.getTheta() < 0) {
             throw new IllegalStateException("theta must not be smaller than zero");
         }
-        if(this.getPhi() > Math.PI) {
+        if(this.getTheta() > Math.PI) {
             throw new IllegalStateException("theta must be smaller than Pi");
         }
     }

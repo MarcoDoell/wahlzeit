@@ -57,16 +57,17 @@ public abstract class AbstractCoordinate implements Coordinate {
      * @return Double
      */
     @Override
-    public Double getCartesianDistance(Coordinate c) {
+    public Double getCartesianDistance(Coordinate c) throws IllegalArgumentException, ArithmeticException {
         assertIsNonNullArgument(c);
 
         CartesianCoordinate thisCoordAsCart = this.asCartesianCoordinate();
         CartesianCoordinate cAsCart = c.asCartesianCoordinate();
 
-        // Calculation
+
         double result = Math.sqrt(
                 Math.pow((cAsCart.getX() - thisCoordAsCart.getX()), 2) + Math.pow((cAsCart.getY() - thisCoordAsCart.getY()), 2) + Math.pow((cAsCart.getZ() - thisCoordAsCart.getZ()), 2));
 
+        assertIsValidResult(result);
         assertIsNotNaN(result);
 
         return result;
@@ -78,7 +79,7 @@ public abstract class AbstractCoordinate implements Coordinate {
      * @return Double
      */
     @Override
-    public Double getCentralAngle(Coordinate c) {
+    public Double getCentralAngle(Coordinate c) throws IllegalArgumentException, ArithmeticException{
         assertIsNonNullArgument(c);
 
         SphericCoordinate thisAsSpheric = this.asSphericCoordinate();
@@ -91,6 +92,7 @@ public abstract class AbstractCoordinate implements Coordinate {
         double result = Math.acos(cos);
 
         assertIsNotNaN(result);
+        assertIsValidResult(result);
 
         return result;
     }
@@ -139,7 +141,7 @@ public abstract class AbstractCoordinate implements Coordinate {
      * @param Object
      * @methodtype helper
      */
-    protected void assertIsNonNullArgument(Object c) {
+    protected void assertIsNonNullArgument(Object c) throws IllegalArgumentException{
         if(c == null)
             throw new IllegalArgumentException("Argument must not be null!");
     }
@@ -149,9 +151,15 @@ public abstract class AbstractCoordinate implements Coordinate {
      * @param double
      * @methodtype helper
      */
-    protected void assertIsNotNaN(double result) {
+    protected void assertIsNotNaN(double result) throws ArithmeticException {
         if(Double.isNaN(result))
             throw new ArithmeticException("Calculation return a NaN result");
+    }
+
+    protected void assertIsValidResult(double result) throws ArithmeticException {
+        if(result < 0) {
+            throw new ArithmeticException("Calculation return a value below zero!");
+        }
     }
 
     protected abstract void assertClassInvariants();

@@ -8,11 +8,11 @@ public interface Coordinate {
 
     public CartesianCoordinate asCartesianCoordinate();
 
-    public Double getCartesianDistance(Coordinate c);
+    public Double getCartesianDistance(Coordinate c) throws IllegalArgumentException, ArithmeticException;
 
     public SphericCoordinate asSphericCoordinate();
 
-    public Double getCentralAngle(Coordinate c);
+    public Double getCentralAngle(Coordinate c) throws IllegalArgumentException, ArithmeticException    ;
 
     public boolean isEqual(Coordinate c);
 

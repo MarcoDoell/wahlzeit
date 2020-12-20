@@ -51,11 +51,10 @@ public class CartesianCoordinate extends AbstractCoordinate {
      * @return SphericCoordinate
      */
     @Override
-    public SphericCoordinate doAsSphericCoordinate() {
+    public SphericCoordinate doAsSphericCoordinate() throws ArithmeticException, IllegalStateException {
         double radius = Math.sqrt(Math.pow(this.getX(), 2) + Math.pow(this.getY(), 2) + Math.pow(this.getZ(), 2));
 
-        if(radius == 0)
-            throw new ArithmeticException("Radius is zero, cant convert to Spheric");
+        assertDivisionWithNull(radius);
 
         double theta = Math.acos(this.getZ() / radius);
 
@@ -82,8 +81,26 @@ public class CartesianCoordinate extends AbstractCoordinate {
      * Checks Class Invariants
      */
     @Override
-    public void assertClassInvariants() {
-        assert !Double.isNaN(this.getX()) && !Double.isNaN(this.getY()) && !Double.isNaN(this.getZ());
+    public void assertClassInvariants() throws IllegalStateException {
+        if(Double.isNaN(this.getX())) {
+            throw new IllegalStateException("X must not be Nan!");
+        }
+        if(Double.isNaN(this.getY())) {
+            throw new IllegalStateException("Y must not be Nan!");
+        }
+        if(Double.isNaN(this.getZ())) {
+            throw new IllegalStateException("Z must not be Nan!");
+        }
+    }
+
+    /**
+     *
+     * Checks Radius is zero
+     */
+    public void assertDivisionWithNull(double value) throws ArithmeticException {
+        if(value == 0) {
+            throw new ArithmeticException("Division through zero is not allowed");
+        }
     }
 
     /**

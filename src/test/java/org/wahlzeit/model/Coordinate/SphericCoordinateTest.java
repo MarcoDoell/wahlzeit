@@ -20,30 +20,53 @@ public class SphericCoordinateTest {
         assertEquals(sphericAsCartesian,cartesianCoord1);
     }
 
-    @Test(expected = AssertionError.class)
+    @Test(expected = IllegalStateException.class)
     public void testCreatingSphericCoordinateViolatesInvariantsRadius() {
         //Act
         Coordinate coord1 = new SphericCoordinate(1.0,1.0,-1);
     }
 
-    @Test(expected = AssertionError.class)
+    @Test(expected = IllegalStateException.class)
     public void testCreatingSphericCoordinateViolatesInvariantsParameterPhi() {
         //Act
         Coordinate coord1 = new SphericCoordinate(Double.NaN,1.0,1);
     }
 
-    @Test(expected = AssertionError.class)
+    @Test(expected = IllegalStateException.class)
     public void testCreatingSphericCoordinateViolatesInvariantsParameterTheta() {
         //Act
         Coordinate coord1 = new SphericCoordinate(1.0,Double.NaN,1);
     }
 
-    @Test(expected = AssertionError.class)
+    @Test(expected = IllegalStateException.class)
     public void testCreatingSphericCoordinateViolatesInvariantsRadius2() {
         //Act
         Coordinate coord1 = new SphericCoordinate(1.0,1.0,Double.NaN);
     }
 
+    @Test(expected = IllegalStateException.class)
+    public void testCreatingSphericCoordinateViolatesInvariantsPhiTooBig() {
+        //Act
+        Coordinate coord1 = new SphericCoordinate(Math.PI * 5,1.0,1);
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void testCreatingSphericCoordinateViolatesInvariantsPhiTooSmall() {
+        //Act
+        Coordinate coord1 = new SphericCoordinate(-1,1.0,1);
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void testCreatingSphericCoordinateViolatesInvariantsThetaTooSmall() {
+        //Act
+        Coordinate coord1 = new SphericCoordinate(1,-5,1);
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void testCreatingSphericCoordinateViolatesInvariantsThetaTooBig() {
+        //Act
+        Coordinate coord1 = new SphericCoordinate(1,Math.PI * 5,1);
+    }
 
     @Test
     public void testEqualsWorksSameParameters() {
