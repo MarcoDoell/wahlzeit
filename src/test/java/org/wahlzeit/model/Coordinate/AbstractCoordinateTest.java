@@ -1,6 +1,9 @@
 package org.wahlzeit.model.Coordinate;
 
 import org.junit.Test;
+import org.mockito.Mockito;
+
+import java.sql.ResultSet;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,7 +11,7 @@ public class AbstractCoordinateTest {
 
 
     @Test(expected = IllegalArgumentException.class)
-    public void testGetCentralAngleThrowException() {
+    public void testGetCentralAngleThrowsIllegalArgumentException() {
         //Act
         Coordinate coord1 = new SphericCoordinate(1.0,1.0,1.0);
 

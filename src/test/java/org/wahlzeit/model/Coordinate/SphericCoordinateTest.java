@@ -20,6 +20,30 @@ public class SphericCoordinateTest {
         assertEquals(sphericAsCartesian,cartesianCoord1);
     }
 
+    @Test(expected = AssertionError.class)
+    public void testCreatingSphericCoordinateViolatesInvariantsRadius() {
+        //Act
+        Coordinate coord1 = new SphericCoordinate(1.0,1.0,-1);
+    }
+
+    @Test(expected = AssertionError.class)
+    public void testCreatingSphericCoordinateViolatesInvariantsParameterPhi() {
+        //Act
+        Coordinate coord1 = new SphericCoordinate(Double.NaN,1.0,1);
+    }
+
+    @Test(expected = AssertionError.class)
+    public void testCreatingSphericCoordinateViolatesInvariantsParameterTheta() {
+        //Act
+        Coordinate coord1 = new SphericCoordinate(1.0,Double.NaN,1);
+    }
+
+    @Test(expected = AssertionError.class)
+    public void testCreatingSphericCoordinateViolatesInvariantsRadius2() {
+        //Act
+        Coordinate coord1 = new SphericCoordinate(1.0,1.0,Double.NaN);
+    }
+
 
     @Test
     public void testEqualsWorksSameParameters() {

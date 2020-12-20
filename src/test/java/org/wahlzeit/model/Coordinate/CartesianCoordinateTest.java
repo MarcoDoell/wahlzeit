@@ -43,4 +43,21 @@ public class CartesianCoordinateTest {
         assertEquals(1.8413460897734695,sphericCoordinate.getTheta(),0.0001);
         assertEquals(0.982793723247329,sphericCoordinate.getPhi(),0.0001);
     }
+
+    @Test(expected = AssertionError.class)
+    public void testConstructorDoesntAllowBadCartesianInstantiationForZ(){
+        Coordinate coord = new CartesianCoordinate(2, 3, Double.NaN);
+    }
+
+    @Test(expected = AssertionError.class)
+    public void testConstructorDoesntAllowBadCartesianInstantiationForY(){
+        Coordinate coord = new CartesianCoordinate(2, Double.NaN, 2);
+    }
+
+    @Test(expected = AssertionError.class)
+    public void testConstructorDoesntAllowBadCartesianInstantiationForX(){
+        Coordinate coord = new CartesianCoordinate(Double.NaN, 3, 2);
+    }
+
+
 }

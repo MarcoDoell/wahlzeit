@@ -30,7 +30,7 @@ public class SphericCoordinate extends AbstractCoordinate {
     /**
      * Converts the String of Coordinates to Phi, Radius and Theta
      * @methodtype constructor
-     * @param Coordinates as String
+     * @param Coordinatesas String
      */
     public SphericCoordinate(String coordinateasString) {
 
