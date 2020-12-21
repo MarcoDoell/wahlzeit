@@ -19,8 +19,8 @@ public class Location {
      * @methodtype constructor
      */
     public Location(Coordinate coordinate) throws IllegalArgumentException {
-        assertIsNonNullArgument(coordinate);
         this.coordinate = coordinate;
+        assertClassInvariants();
     }
 
     /**
@@ -36,8 +36,8 @@ public class Location {
      * @methodtype set
      */
     public void setCoordinate(Coordinate coordinate) throws IllegalArgumentException {
-        assertIsNonNullArgument(coordinate);
         this.coordinate = coordinate;
+        assertClassInvariants();
     }
 
     /**
@@ -55,8 +55,8 @@ public class Location {
         }
     }
 
-    protected void assertIsNonNullArgument(Object c) throws IllegalArgumentException {
-        if(c == null)
-            throw new IllegalArgumentException("Argument must not be null!");
+    public void assertClassInvariants() throws IllegalStateException{
+        if(this.getCoordinate() == null)
+            throw new IllegalStateException("Coordinate must not be null!");
     }
 }

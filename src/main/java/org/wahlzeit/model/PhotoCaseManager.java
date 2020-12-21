@@ -86,7 +86,7 @@ public class PhotoCaseManager extends ObjectManager {
 			try {
 				PreparedStatement stmt = getReadingStatement("SELECT * FROM cases WHERE id = ?");
 				result = (PhotoCase) readObject(stmt, id);
-			} catch (SQLException sex) {
+			} catch (SQLException | CreateCarPhotoException sex) {
 				SysLog.logThrowable(sex);
 			}
 		}
@@ -133,7 +133,7 @@ public class PhotoCaseManager extends ObjectManager {
 		try {
 			PreparedStatement stmt = getReadingStatement("SELECT * FROM cases WHERE was_decided = FALSE");
 			readObjects(result, stmt);
-		} catch (SQLException sex) {
+		} catch (SQLException | CreateCarPhotoException sex) {
 			SysLog.logThrowable(sex);
 		}
 		

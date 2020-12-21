@@ -126,7 +126,8 @@ public class Photo extends DataObject {
 	 * 
 	 * @methodtype constructor
 	 */
-	public Photo(PhotoId myId) {
+	public Photo(PhotoId myId) throws IllegalArgumentException {
+		assertIsNonNullArgument(myId);
 		id = myId;
 		
 		incWriteCount();
@@ -136,7 +137,8 @@ public class Photo extends DataObject {
 	 * 
 	 * @methodtype constructor
 	 */
-	public Photo(ResultSet rset) throws SQLException {
+	public Photo(ResultSet rset) throws SQLException, IllegalArgumentException {
+		assertIsNonNullArgument(rset);
 		readFrom(rset);
 	}
 
@@ -151,7 +153,8 @@ public class Photo extends DataObject {
 	/**
 	 * 
 	 */
-	public void readFrom(ResultSet rset) throws SQLException {
+	public void readFrom(ResultSet rset) throws SQLException, IllegalArgumentException {
+		assertIsNonNullArgument(rset);
 		id = PhotoId.getIdFromInt(rset.getInt("id"));
 
 		ownerId = rset.getInt("owner_id");
@@ -185,7 +188,9 @@ public class Photo extends DataObject {
 	/**
 	 * 
 	 */
-	public void writeOn(ResultSet rset) throws SQLException {
+	public void writeOn(ResultSet rset) throws SQLException, IllegalArgumentException {
+		assertIsNonNullArgument(rset);
+
 		rset.updateInt("id", id.asInt());
 		rset.updateInt("owner_id", ownerId);
 		rset.updateString("owner_name", ownerName);
@@ -237,7 +242,8 @@ public class Photo extends DataObject {
 	 *
 	 * @methodtype set
 	 */
-	public void setLocation(Location location) {
+	public void setLocation(Location location) throws IllegalArgumentException {
+		assertIsNonNullArgument(location);
 		this.location = location;
 		incWriteCount();
 	}
@@ -254,7 +260,8 @@ public class Photo extends DataObject {
 	 * 
 	 * @methodtype set
 	 */
-	public void setOwnerId(int newId) {
+	public void setOwnerId(int newId) throws IllegalArgumentException {
+		assertIsNonNullArgument(newId);
 		ownerId = newId;
 		incWriteCount();
 	}
@@ -271,7 +278,8 @@ public class Photo extends DataObject {
 	 * 
 	 * @methodtype set
 	 */
-	public void setOwnerName(String newName) {
+	public void setOwnerName(String newName) throws IllegalArgumentException {
+		assertIsNonNullArgument(newName);
 		ownerName = newName;
 		incWriteCount();
 	}
@@ -304,7 +312,8 @@ public class Photo extends DataObject {
 	 * 
 	 * @methodtype set
 	 */
-	public void setOwnerNotifyAboutPraise(boolean newNotifyAboutPraise) {
+	public void setOwnerNotifyAboutPraise(boolean newNotifyAboutPraise) throws IllegalArgumentException {
+		assertIsNonNullArgument(newNotifyAboutPraise);
 		ownerNotifyAboutPraise = newNotifyAboutPraise;
 		incWriteCount();
 	}
@@ -321,7 +330,8 @@ public class Photo extends DataObject {
 	 * 
 	 * @methodtype set
 	 */
-	public void setOwnerEmailAddress(EmailAddress newEmailAddress) {
+	public void setOwnerEmailAddress(EmailAddress newEmailAddress) throws IllegalArgumentException {
+		assertIsNonNullArgument(newEmailAddress);
 		ownerEmailAddress = newEmailAddress;
 		incWriteCount();
 	}
@@ -336,7 +346,8 @@ public class Photo extends DataObject {
 	/**
 	 * 
 	 */
-	public void setOwnerLanguage(Language newLanguage) {
+	public void setOwnerLanguage(Language newLanguage) throws IllegalArgumentException {
+		assertIsNonNullArgument(newLanguage);
 		ownerLanguage = newLanguage;
 		incWriteCount();
 	}
@@ -353,7 +364,8 @@ public class Photo extends DataObject {
 	 * 
 	 * @methodtype set
 	 */
-	public void setOwnerHomePage(URL newHomePage) {
+	public void setOwnerHomePage(URL newHomePage) throws IllegalArgumentException {
+		assertIsNonNullArgument(newHomePage);
 		ownerHomePage = newHomePage;
 		incWriteCount();
 	}
@@ -362,7 +374,8 @@ public class Photo extends DataObject {
 	 * 
 	 * @methodtype boolean-query
 	 */
-	public boolean hasSameOwner(Photo photo) {
+	public boolean hasSameOwner(Photo photo) throws IllegalArgumentException {
+		assertIsNonNullArgument(photo);
 		return photo.getOwnerEmailAddress().equals(ownerEmailAddress);
 	}
 
@@ -481,7 +494,8 @@ public class Photo extends DataObject {
 	 * 
 	 * @methodtype set
 	 */
-	public void setStatus(PhotoStatus newStatus) {
+	public void setStatus(PhotoStatus newStatus) throws IllegalArgumentException {
+		assertIsNonNullArgument(newStatus);
 		status = newStatus;
 		incWriteCount();
 	}
@@ -506,7 +520,8 @@ public class Photo extends DataObject {
 	 * 
 	 * @methodtype set
 	 */
-	public void setTags(Tags newTags) {
+	public void setTags(Tags newTags) throws IllegalArgumentException {
+		assertIsNonNullArgument(newTags);
 		tags = newTags;
 		incWriteCount();
 	}
@@ -517,6 +532,11 @@ public class Photo extends DataObject {
 	 */
 	public long getCreationTime() {
 		return creationTime;
+	}
+
+	protected void assertIsNonNullArgument(Object c) throws IllegalArgumentException{
+		if(c == null)
+			throw new IllegalArgumentException("Argument must not be null!");
 	}
 	
 }

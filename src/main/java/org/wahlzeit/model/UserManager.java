@@ -105,7 +105,7 @@ public class UserManager extends ObjectManager {
 			try {
 				PreparedStatement stmt = getReadingStatement("SELECT * FROM users WHERE name_as_tag = ?");
 				result = (User) readObject(stmt, tag);
-			} catch (SQLException sex) {
+			} catch (SQLException | CreateCarPhotoException sex) {
 				SysLog.logThrowable(sex);
 			}
 			
@@ -219,7 +219,7 @@ public class UserManager extends ObjectManager {
 					SysLog.logSysInfo("user", user.getName(), "user had already been loaded");
 				}
 			}
-		} catch (SQLException sex) {
+		} catch (SQLException | CreateCarPhotoException sex) {
 			SysLog.logThrowable(sex);
 		}
 		
@@ -316,7 +316,7 @@ public class UserManager extends ObjectManager {
 		try {
 			PreparedStatement stmt = getReadingStatement("SELECT * FROM users WHERE email_address = ?");
 			result = (User) readObject(stmt, emailAddress.asString());
-		} catch (SQLException sex) {
+		} catch (SQLException | CreateCarPhotoException sex) {
 			SysLog.logThrowable(sex);
 		}
 		

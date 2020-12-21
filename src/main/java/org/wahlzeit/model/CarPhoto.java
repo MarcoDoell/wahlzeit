@@ -69,7 +69,7 @@ public class CarPhoto extends Photo {
      *
      */
     @Override
-    public void readFrom(ResultSet rset) throws SQLException {
+    public void readFrom(ResultSet rset) throws SQLException, IllegalStateException {
         super.readFrom(rset);
         this.car = new Car(rset.getString("brand"));
         assertClassInvariants();

@@ -1,5 +1,6 @@
 package org.wahlzeit.model;
 
+
 import org.junit.Test;
 import org.wahlzeit.model.Coordinate.CartesianCoordinate;
 
@@ -11,7 +12,7 @@ import static org.junit.Assert.assertNotNull;
  */
 public class LocationTest {
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = IllegalStateException.class)
     public void testConstructorWithNullParameter() {
         //Act
         Location location = new Location(null);

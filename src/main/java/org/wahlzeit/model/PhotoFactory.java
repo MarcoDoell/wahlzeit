@@ -74,21 +74,21 @@ public class PhotoFactory {
 	/**
 	 * @methodtype factory
 	 */
-	public Photo createPhoto() {
+	public Photo createPhoto() throws CreateCarPhotoException {
 		return new Photo();
 	}
 	
 	/**
 	 * 
 	 */
-	public Photo createPhoto(PhotoId id) {
+	public Photo createPhoto(PhotoId id) throws CreateCarPhotoException {
 		return new Photo(id);
 	}
 	
 	/**
 	 * 
 	 */
-	public Photo createPhoto(ResultSet rs) throws SQLException {
+	public Photo createPhoto(ResultSet rs) throws SQLException, CreateCarPhotoException {
 		return new Photo(rs);
 	}
 	

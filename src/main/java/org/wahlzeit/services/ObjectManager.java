@@ -6,6 +6,8 @@
 
 package org.wahlzeit.services;
 
+import org.wahlzeit.model.CreateCarPhotoException;
+
 import java.sql.*;
 import java.util.*;
 
@@ -41,7 +43,7 @@ public abstract class ObjectManager {
 	/**
 	 * 
 	 */
-	protected Persistent readObject(PreparedStatement stmt, int value) throws SQLException {
+	protected Persistent readObject(PreparedStatement stmt, int value) throws SQLException, CreateCarPhotoException {
 		Persistent result = null;
 		stmt.setInt(1, value);
 		SysLog.logQuery(stmt);
@@ -56,7 +58,7 @@ public abstract class ObjectManager {
 	/**
 	 * 
 	 */
-	protected Persistent readObject(PreparedStatement stmt, String value) throws SQLException {
+	protected Persistent readObject(PreparedStatement stmt, String value) throws SQLException, CreateCarPhotoException {
 		Persistent result = null;
 		stmt.setString(1, value);
 		SysLog.logQuery(stmt);
@@ -71,7 +73,7 @@ public abstract class ObjectManager {
 	/**
 	 * 
 	 */
-	protected void readObjects(Collection result, PreparedStatement stmt) throws SQLException {
+	protected void readObjects(Collection result, PreparedStatement stmt) throws SQLException, CreateCarPhotoException {
 		SysLog.logQuery(stmt);
 		ResultSet rset = stmt.executeQuery();
 		while (rset.next()) {
@@ -83,7 +85,7 @@ public abstract class ObjectManager {
 	/**
 	 * 
 	 */
-	protected void readObjects(Collection result, PreparedStatement stmt, String value) throws SQLException {
+	protected void readObjects(Collection result, PreparedStatement stmt, String value) throws SQLException, CreateCarPhotoException {
 		stmt.setString(1, value);
 		SysLog.logQuery(stmt);
 		ResultSet rset = stmt.executeQuery();
@@ -96,7 +98,7 @@ public abstract class ObjectManager {
 	/**
 	 * 
 	 */
-	protected abstract Persistent createObject(ResultSet rset) throws SQLException;
+	protected abstract Persistent createObject(ResultSet rset) throws SQLException, CreateCarPhotoException;
 
 	/**
 	 * 

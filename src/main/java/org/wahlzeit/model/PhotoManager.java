@@ -111,7 +111,7 @@ public class PhotoManager extends ObjectManager {
 			try {
 				PreparedStatement stmt = getReadingStatement("SELECT * FROM photos WHERE id = ?");
 				result = (Photo) readObject(stmt, id.asInt());
-			} catch (SQLException sex) {
+			} catch (SQLException | CreateCarPhotoException sex) {
 				SysLog.logThrowable(sex);
 			}
 			if (result != null) {
@@ -133,7 +133,7 @@ public class PhotoManager extends ObjectManager {
 	/**
 	 * 
 	 */
-	protected Photo createObject(ResultSet rset) throws SQLException {
+	protected Photo createObject(ResultSet rset) throws SQLException, CreateCarPhotoException {
 		return PhotoFactory.getInstance().createPhoto(rset);
 	}
 	
@@ -179,7 +179,7 @@ public class PhotoManager extends ObjectManager {
 					SysLog.logSysInfo("photo", photo.getId().asString(), "photo had already been loaded");
 				}
 			}
-		} catch (SQLException sex) {
+		} catch (SQLException | CreateCarPhotoException sex) {
 			SysLog.logThrowable(sex);
 		}
 		
@@ -221,7 +221,7 @@ public class PhotoManager extends ObjectManager {
 		try {
 			PreparedStatement stmt = getReadingStatement("SELECT * FROM photos WHERE owner_name = ?");
 			readObjects(result, stmt, ownerName);
-		} catch (SQLException sex) {
+		} catch (SQLException | CreateCarPhotoException sex) {
 			SysLog.logThrowable(sex);
 		}
 		
