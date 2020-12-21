@@ -44,7 +44,7 @@ public class CarPhoto extends Photo {
      * @methodtype constuctor
      */
     public CarPhoto(Car car) {
-        this.car = car;
+        setCar(car);
     }
 
     /**
@@ -61,6 +61,7 @@ public class CarPhoto extends Photo {
      */
     public void setCar(Car car) {
         this.car = car;
+        assertClassInvariants();
     }
 
     /**
@@ -71,6 +72,7 @@ public class CarPhoto extends Photo {
     public void readFrom(ResultSet rset) throws SQLException {
         super.readFrom(rset);
         this.car = new Car(rset.getString("brand"));
+        assertClassInvariants();
     }
 
     /**
@@ -81,5 +83,10 @@ public class CarPhoto extends Photo {
     public void writeOn(ResultSet rset) throws SQLException {
         super.writeOn(rset);
         rset.updateString("brand",this.car.getBrand());
+    }
+
+    public void assertClassInvariants() throws IllegalStateException{
+        if(this.getCar() == null)
+            throw new IllegalStateException("Car must not be null!");
     }
 }
