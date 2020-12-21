@@ -15,7 +15,7 @@ public class Car {
      * @methodtype constructor
      */
     public Car(String brand) {
-        this.brand = brand;
+        setBrand(brand);
     }
 
     /**
@@ -33,6 +33,7 @@ public class Car {
      */
     public void setBrand(String brand) {
         this.brand = brand;
+        assertClassInvariants();
     }
 
     @Override
@@ -46,5 +47,14 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(brand);
+    }
+
+    protected void assertClassInvariants() {
+        if(this.brand == null){
+            throw new IllegalStateException("brand must not be null!");
+        }
+        if(this.brand.isEmpty()){
+            throw new IllegalStateException("brand must not be empty");
+        }
     }
 }
