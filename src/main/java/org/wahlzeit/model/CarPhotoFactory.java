@@ -33,7 +33,8 @@ public class CarPhotoFactory extends PhotoFactory {
      *
      */
     @Override
-    public CarPhoto createPhoto(PhotoId id) {
+    public CarPhoto createPhoto(PhotoId id) throws IllegalArgumentException {
+        assertIsNonNullArgument(id);
         return new CarPhoto(id);
     }
 
@@ -42,7 +43,13 @@ public class CarPhotoFactory extends PhotoFactory {
      *
      */
     @Override
-    public CarPhoto createPhoto(ResultSet rs) throws SQLException {
+    public CarPhoto createPhoto(ResultSet rs) throws SQLException, IllegalArgumentException {
+        assertIsNonNullArgument(rs);
         return new CarPhoto(rs);
+    }
+
+    protected void assertIsNonNullArgument(Object c) throws IllegalArgumentException {
+        if(c == null)
+            throw new IllegalArgumentException("Argument must not be null!");
     }
 }
