@@ -18,9 +18,8 @@ public class Location {
      *
      * @methodtype constructor
      */
-    public Location(Coordinate coordinate) {
-        if(coordinate == null)
-            throw new IllegalArgumentException("Coordinate is not allowed to be null");
+    public Location(Coordinate coordinate) throws IllegalArgumentException {
+        assertIsNonNullArgument(coordinate);
         this.coordinate = coordinate;
     }
 
@@ -36,7 +35,8 @@ public class Location {
      *
      * @methodtype set
      */
-    public void setCoordinate(Coordinate coordinate) {
+    public void setCoordinate(Coordinate coordinate) throws IllegalArgumentException {
+        assertIsNonNullArgument(coordinate);
         this.coordinate = coordinate;
     }
 
@@ -53,5 +53,10 @@ public class Location {
             SphericCoordinate tempoSphericCoordinate = this.coordinate.asSphericCoordinate();
             return tempoSphericCoordinate.getPhi() + "/" + tempoSphericCoordinate.getRadius() + "/" + tempoSphericCoordinate.getTheta();
         }
+    }
+
+    protected void assertIsNonNullArgument(Object c) throws IllegalArgumentException {
+        if(c == null)
+            throw new IllegalArgumentException("Argument must not be null!");
     }
 }
