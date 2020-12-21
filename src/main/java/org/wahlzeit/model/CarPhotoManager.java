@@ -46,6 +46,7 @@ public class CarPhotoManager extends PhotoManager {
      */
     @Override
     protected CarPhoto getPhotoFromFilter(PhotoFilter filter) {
+        assertIsNonNullArgument(filter);
         return (CarPhoto) super.getPhotoFromFilter(filter);
     }
 
@@ -55,6 +56,7 @@ public class CarPhotoManager extends PhotoManager {
      */
     @Override
     protected CarPhoto doGetPhotoFromId(PhotoId id) {
+        assertIsNonNullArgument(id);
         return (CarPhoto) super.doGetPhotoFromId(id);
     }
 
