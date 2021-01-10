@@ -28,6 +28,11 @@ import org.wahlzeit.model.Coordinate.SphericCoordinate;
 import org.wahlzeit.services.*;
 import org.wahlzeit.utils.*;
 
+import static org.wahlzeit.model.Coordinate.CartesianCoordinate.createCartesianCoordinate;
+import static org.wahlzeit.model.Coordinate.CartesianCoordinate.createCartesianCoordinateFromString;
+import static org.wahlzeit.model.Coordinate.SphericCoordinate.createSphericCoordinate;
+import static org.wahlzeit.model.Coordinate.SphericCoordinate.createSphericCoordinateFromString;
+
 /**
  * A photo represents a user-provided (uploaded) photo.
  */
@@ -105,7 +110,7 @@ public class Photo extends DataObject {
 	/**
 	 *
 	 */
-	protected Location location = new Location(new SphericCoordinate(Math.random(), Math.random(), Math.random()));
+	protected Location location = new Location(createCartesianCoordinate(Math.random(), Math.random(), Math.random()));
 	protected final String CARTESIAN_IDENTIFIER = "cartesian";
 	protected final String SPHERIC_IDENTIFIER = "spheric";
 	
@@ -180,9 +185,9 @@ public class Photo extends DataObject {
 
 		String identifier = rset.getString("coordinateidentifier");
 		if(identifier.equals(SPHERIC_IDENTIFIER))
-			location = new Location(new SphericCoordinate(rset.getString("location")));
+			location = new Location(createSphericCoordinateFromString(rset.getString("location")));
 		else
-			location = new Location(new CartesianCoordinate(rset.getString("location")));
+			location = new Location(createCartesianCoordinateFromString(rset.getString("location")));
 	}
 	
 	/**

@@ -2,6 +2,8 @@ package org.wahlzeit.model.Coordinate;
 
 import java.util.Objects;
 
+import static org.wahlzeit.model.Coordinate.SphericCoordinate.createSphericCoordinate;
+
 public class CartesianCoordinate extends AbstractCoordinate {
     private final double x;
     private final double y;
@@ -107,7 +109,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
         }
 
 
-        return new SphericCoordinate(phi, theta, radius);
+        return createSphericCoordinate(phi, theta, radius);
     }
 
     /**

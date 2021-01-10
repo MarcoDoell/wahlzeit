@@ -3,6 +3,8 @@ package org.wahlzeit.model.Coordinate;
 
 import java.util.Objects;
 
+import static org.wahlzeit.model.Coordinate.CartesianCoordinate.createCartesianCoordinate;
+
 /**
  *
  * Sperhic Coordinate class
@@ -137,7 +139,7 @@ public class SphericCoordinate extends AbstractCoordinate {
         double y = this.radius * Math.sin(this.theta) * Math.sin(this.phi);
         double z = this.radius * Math.cos(this.theta);
 
-        return new CartesianCoordinate(x, y, z);
+        return createCartesianCoordinate(x,y,z);
     }
 
     /**
