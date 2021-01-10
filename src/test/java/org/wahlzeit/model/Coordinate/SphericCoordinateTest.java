@@ -1,16 +1,24 @@
 package org.wahlzeit.model.Coordinate;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.wahlzeit.model.Coordinate.CartesianCoordinate;
 import org.wahlzeit.model.Coordinate.Coordinate;
 import org.wahlzeit.model.Coordinate.SphericCoordinate;
 
 import static org.junit.Assert.*;
+import static org.wahlzeit.model.Coordinate.AbstractCoordinate.sphericCoordinateHashMap;
 import static org.wahlzeit.model.Coordinate.CartesianCoordinate.createCartesianCoordinate;
+import static org.wahlzeit.model.Coordinate.CartesianCoordinate.createCartesianCoordinateFromString;
 import static org.wahlzeit.model.Coordinate.SphericCoordinate.createSphericCoordinate;
+import static org.wahlzeit.model.Coordinate.SphericCoordinate.createSphericCoordinateFromString;
 
 public class SphericCoordinateTest {
 
+    @Before
+    public void cleanUp() {
+        sphericCoordinateHashMap.clear();
+    }
     @Test
     public void testAsCartesianCoordinate() {
         Coordinate sphericCoord1 = createSphericCoordinate(1.0,1.0,1.0);
@@ -21,6 +29,55 @@ public class SphericCoordinateTest {
 
         assertEquals(sphericAsCartesian,cartesianCoord1);
     }
+
+    @Test
+    public void testCreateSphericCoordinate() {
+        createSphericCoordinate(1,1,1);
+        assertEquals(1,sphericCoordinateHashMap.size());
+    }
+
+    @Test
+    public void testCreateSphericCoordinateFromString() {
+        createCartesianCoordinateFromString("1/1/1");
+        assertEquals(1,sphericCoordinateHashMap.size());
+    }
+
+    @Test
+    public void testCreateSphericCoordinateSameObjects() {
+        createSphericCoordinate(1,1,1);
+        createSphericCoordinate(1,1,1);
+        createSphericCoordinate(1,1,1);
+        createSphericCoordinate(1,1,1);
+        assertEquals(1,sphericCoordinateHashMap.size());
+    }
+
+    @Test
+    public void testCreateSphericCoordinateFromStringSameObject() {
+        createSphericCoordinateFromString("1/1/1");
+        createSphericCoordinateFromString("1/1/1");
+        createSphericCoordinateFromString("1/1/1");
+        assertEquals(1,sphericCoordinateHashMap.size());
+    }
+
+    @Test
+    public void testCreateSphericCoordinateMultipleObjects() {
+        createSphericCoordinate(1,1,1);
+        createSphericCoordinate(1,1,1);
+        createSphericCoordinate(1,1,2);
+        createSphericCoordinate(1,2,1);
+        assertEquals(3,sphericCoordinateHashMap.size());
+    }
+
+    @Test
+    public void testCreateSphericCoordinateFromStringMultipleObjects() {
+        createSphericCoordinateFromString("1/1/1");
+        createSphericCoordinateFromString("1/2/1");
+        createSphericCoordinateFromString("1/1/1");
+        createSphericCoordinateFromString("1/1/1");
+        createSphericCoordinateFromString("3/1/1");
+        assertEquals(3,sphericCoordinateHashMap.size());
+    }
+
 
     @Test(expected = IllegalStateException.class)
     public void testCreatingSphericCoordinateViolatesInvariantsRadius() {

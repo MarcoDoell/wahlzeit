@@ -42,7 +42,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
 
     }
 
-    public static CartesianCoordinate doCreateCartesianCoordinate(CartesianCoordinate cart, CartesianCoordinate result) {
+    private static CartesianCoordinate doCreateCartesianCoordinate(CartesianCoordinate cart, CartesianCoordinate result) {
         if(result == null) {
             synchronized (cartesianCoordinateHashMap) {
                 result = cartesianCoordinateHashMap.get(cart.doHashCode());

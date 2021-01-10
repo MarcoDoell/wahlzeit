@@ -1,16 +1,73 @@
 package org.wahlzeit.model.Coordinate;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.wahlzeit.model.Coordinate.CartesianCoordinate;
 import org.wahlzeit.model.Coordinate.Coordinate;
 import org.wahlzeit.model.Coordinate.SphericCoordinate;
 
 import static org.junit.Assert.assertEquals;
+import static org.wahlzeit.model.Coordinate.AbstractCoordinate.cartesianCoordinateHashMap;
 import static org.wahlzeit.model.Coordinate.CartesianCoordinate.createCartesianCoordinate;
+import static org.wahlzeit.model.Coordinate.CartesianCoordinate.createCartesianCoordinateFromString;
+import static org.wahlzeit.model.Coordinate.SphericCoordinate.createSphericCoordinate;
+import static org.wahlzeit.model.Coordinate.SphericCoordinate.createSphericCoordinateFromString;
 
 
 public class CartesianCoordinateTest {
 
+    @Before
+    public void cleanUp() {
+        cartesianCoordinateHashMap.clear();
+    }
+
+    @Test
+    public void testCreateSphericCoordinate() {
+        createCartesianCoordinate(1,1,1);
+        assertEquals(1,cartesianCoordinateHashMap.size());
+    }
+
+    @Test
+    public void testCreateSphericCoordinateFromString() {
+        createCartesianCoordinateFromString("1/1/1");
+        assertEquals(1,cartesianCoordinateHashMap.size());
+    }
+
+    @Test
+    public void testCreateSphericCoordinateSameObjects() {
+        createCartesianCoordinate(1,1,1);
+        createCartesianCoordinate(1,1,1);
+        createCartesianCoordinate(1,1,1);
+        createCartesianCoordinate(1,1,1);
+        assertEquals(1,cartesianCoordinateHashMap.size());
+    }
+
+    @Test
+    public void testCreateSphericCoordinateFromStringSameObject() {
+        createCartesianCoordinateFromString("1/1/1");
+        createCartesianCoordinateFromString("1/1/1");
+        createCartesianCoordinateFromString("1/1/1");
+        assertEquals(1,cartesianCoordinateHashMap.size());
+    }
+
+    @Test
+    public void testCreateSphericCoordinateMultipleObjects() {
+        createCartesianCoordinate(1,1,1);
+        createCartesianCoordinate(1,1,1);
+        createCartesianCoordinate(1,1,2);
+        createCartesianCoordinate(1,2,1);
+        assertEquals(3,cartesianCoordinateHashMap.size());
+    }
+
+    @Test
+    public void testCreateSphericCoordinateFromStringMultipleObjects() {
+        createCartesianCoordinateFromString("1/1/1");
+        createCartesianCoordinateFromString("1/2/1");
+        createCartesianCoordinateFromString("1/1/1");
+        createCartesianCoordinateFromString("1/1/1");
+        createCartesianCoordinateFromString("3/1/1");
+        assertEquals(3,cartesianCoordinateHashMap.size());
+    }
     @Test
     public void testAsSphericCoordinateY1(){
         Coordinate coord = createCartesianCoordinate(0, 1, 0);
