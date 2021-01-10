@@ -38,7 +38,7 @@ public class SphericCoordinateTest {
 
     @Test
     public void testCreateSphericCoordinateFromString() {
-        createCartesianCoordinateFromString("1/1/1");
+        createSphericCoordinateFromString("1/1/1");
         assertEquals(1,sphericCoordinateHashMap.size());
     }
 
