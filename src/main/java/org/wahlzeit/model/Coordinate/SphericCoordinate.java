@@ -19,7 +19,7 @@ public class SphericCoordinate extends AbstractCoordinate {
      * @methodtype constructor
      * @param phi, theta ,radius Coordinates
      */
-    public SphericCoordinate(double phi, double theta, double radius){
+    private SphericCoordinate(double phi, double theta, double radius){
         this.phi = phi;
         this.theta = theta;
         this.radius = radius;
