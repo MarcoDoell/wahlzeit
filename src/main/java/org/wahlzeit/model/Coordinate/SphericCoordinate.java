@@ -32,7 +32,7 @@ public class SphericCoordinate extends AbstractCoordinate {
      * @methodtype constructor
      * @param Coordinatesas String
      */
-    public SphericCoordinate(String coordinateasString) {
+    private SphericCoordinate(String coordinateasString) {
 
         String[] coordSplit = coordinateasString.split("/");
 

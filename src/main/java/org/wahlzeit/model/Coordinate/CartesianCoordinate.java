@@ -26,6 +26,21 @@ public class CartesianCoordinate extends AbstractCoordinate {
 
         CartesianCoordinate result = cartesianCoordinateHashMap.get(cart.hashCode());
 
+        return doCreateCartesianCoordinate(cart,result);
+
+    }
+
+    public static CartesianCoordinate createCartesianCoordinateFromString(String coordinates) {
+
+        CartesianCoordinate cart = new CartesianCoordinate(coordinates);
+
+        CartesianCoordinate result = cartesianCoordinateHashMap.get(cart.hashCode());
+
+        return doCreateCartesianCoordinate(cart, result);
+
+    }
+
+    public static CartesianCoordinate doCreateCartesianCoordinate(CartesianCoordinate cart, CartesianCoordinate result) {
         if(result == null) {
             synchronized (cartesianCoordinateHashMap) {
                 result = cartesianCoordinateHashMap.get(cart.hashCode());
@@ -44,7 +59,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
      * @methodtype constructor
      * @param Coordinates as String
      */
-    public CartesianCoordinate(String coordinateasString) {
+    private CartesianCoordinate(String coordinateasString) {
 
         String[] coordSplit = coordinateasString.split("/");
 
