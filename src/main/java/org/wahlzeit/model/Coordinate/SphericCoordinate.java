@@ -43,6 +43,39 @@ public class SphericCoordinate extends AbstractCoordinate {
         assertClassInvariants();
     }
 
+    public static SphericCoordinate createSphericCoordinate(double phi, double theta, double radius) {
+
+        SphericCoordinate cart = new SphericCoordinate(phi, theta, radius);
+
+        SphericCoordinate result = sphericCoordinateHashMap.get(cart.hashCode());
+
+        return doCreateSphericCoordinateFromString(cart,result);
+    }
+
+    public static SphericCoordinate createSphericCoordinateFromString(String coordinate) {
+
+        SphericCoordinate cart = new SphericCoordinate(coordinate);
+
+        SphericCoordinate result = sphericCoordinateHashMap.get(cart.hashCode());
+
+       return doCreateSphericCoordinateFromString(cart,result);
+    }
+
+    public static SphericCoordinate doCreateSphericCoordinateFromString(SphericCoordinate cart, SphericCoordinate result) {
+        if(result == null) {
+            synchronized (sphericCoordinateHashMap) {
+                result = sphericCoordinateHashMap.get(cart.hashCode());
+                if (result == null) {
+                    result = cart;
+                    sphericCoordinateHashMap.put(cart.hashCode(), cart);
+                }
+            }
+        }
+
+        return result;
+    }
+
+
     /**
      *
      * @methodtype get
