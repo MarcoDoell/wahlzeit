@@ -1,7 +1,12 @@
 package org.wahlzeit.model.Coordinate;
 
+import java.util.HashMap;
+
 public abstract class AbstractCoordinate implements Coordinate {
 
+
+    final static HashMap<Integer, CartesianCoordinate> cartesianCoordinateHashMap = new HashMap<>();
+    final static HashMap<Integer, SphericCoordinate> sphericCoordinateHashMap = new HashMap<>();
 
     /**
      * Converts any Coordinate type to Cartesian Type
