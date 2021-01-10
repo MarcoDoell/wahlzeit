@@ -20,6 +20,25 @@ public class CartesianCoordinate extends AbstractCoordinate {
         assertClassInvariants();
     }
 
+    public static CartesianCoordinate createCartesianCoordinate(double x, double y, double z) {
+
+        CartesianCoordinate cart = new CartesianCoordinate(x, y, z);
+
+        CartesianCoordinate result = cartesianCoordinateHashMap.get(cart.hashCode());
+
+        if(result == null) {
+            synchronized (cartesianCoordinateHashMap) {
+                result = cartesianCoordinateHashMap.get(cart.hashCode());
+                if (result == null) {
+                    result = cart;
+                    cartesianCoordinateHashMap.put(cart.hashCode(), cart);
+                }
+            }
+        }
+
+        return result;
+    }
+
     /**
      * Converts the String of Coordinates to X, Y , Z
      * @methodtype constructor
