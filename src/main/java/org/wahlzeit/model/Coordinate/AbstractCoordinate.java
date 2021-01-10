@@ -168,5 +168,9 @@ public abstract class AbstractCoordinate implements Coordinate {
         }
     }
 
+    protected Object clone() {
+        return this;
+    }
+
     protected abstract void assertClassInvariants();
 }
