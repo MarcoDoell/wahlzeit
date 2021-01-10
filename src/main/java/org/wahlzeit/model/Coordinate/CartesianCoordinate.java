@@ -26,7 +26,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
 
         CartesianCoordinate cart = new CartesianCoordinate(x, y, z);
 
-        CartesianCoordinate result = cartesianCoordinateHashMap.get(cart.hashCode());
+        CartesianCoordinate result = cartesianCoordinateHashMap.get(cart.doHashCode());
 
         return doCreateCartesianCoordinate(cart,result);
 
@@ -36,7 +36,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
 
         CartesianCoordinate cart = new CartesianCoordinate(coordinates);
 
-        CartesianCoordinate result = cartesianCoordinateHashMap.get(cart.hashCode());
+        CartesianCoordinate result = cartesianCoordinateHashMap.get(cart.doHashCode());
 
         return doCreateCartesianCoordinate(cart, result);
 
@@ -45,10 +45,10 @@ public class CartesianCoordinate extends AbstractCoordinate {
     public static CartesianCoordinate doCreateCartesianCoordinate(CartesianCoordinate cart, CartesianCoordinate result) {
         if(result == null) {
             synchronized (cartesianCoordinateHashMap) {
-                result = cartesianCoordinateHashMap.get(cart.hashCode());
+                result = cartesianCoordinateHashMap.get(cart.doHashCode());
                 if (result == null) {
                     result = cart;
-                    cartesianCoordinateHashMap.put(cart.hashCode(), cart);
+                    cartesianCoordinateHashMap.put(cart.doHashCode(), cart);
                 }
             }
         }
@@ -146,7 +146,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
      */
     @Override
     public int doHashCode() {
-        return Objects.hash(x, y, z);
+        return Objects.hash(x*HASH_MULTIPLIER, y*HASH_MULTIPLIER, z*HASH_MULTIPLIER);
     }
 
     /**

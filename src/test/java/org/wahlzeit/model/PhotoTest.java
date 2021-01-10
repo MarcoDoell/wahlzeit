@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static org.mockito.Mockito.verify;
+import static org.wahlzeit.model.Coordinate.CartesianCoordinate.createCartesianCoordinate;
+import static org.wahlzeit.model.Coordinate.SphericCoordinate.createSphericCoordinate;
 
 public class PhotoTest {
 
@@ -42,7 +44,7 @@ public class PhotoTest {
         ResultSet resultSet = Mockito.mock(ResultSet.class);
 
         Photo photo = new Photo();
-        photo.setLocation(new Location(new CartesianCoordinate(1,2,3)));
+        photo.setLocation(new Location(createCartesianCoordinate(1,2,3)));
         photo.setOwnerEmailAddress(EmailAddress.getFromString("wahlzeit@wahlzeit.de"));
         photo.setOwnerHomePage(new URL("http://www.wahlzeit.de"));
 
@@ -60,7 +62,7 @@ public class PhotoTest {
         ResultSet resultSet = Mockito.mock(ResultSet.class);
 
         Photo photo = new Photo();
-        photo.setLocation(new Location(new SphericCoordinate(1.0,2.0,3.0)));
+        photo.setLocation(new Location(createSphericCoordinate(1.0,2.0,3.0)));
         photo.setOwnerEmailAddress(EmailAddress.getFromString("wahlzeit@wahlzeit.de"));
         photo.setOwnerHomePage(new URL("http://www.wahlzeit.de"));
 

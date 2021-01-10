@@ -6,6 +6,7 @@ import org.wahlzeit.model.Coordinate.CartesianCoordinate;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.wahlzeit.model.Coordinate.CartesianCoordinate.createCartesianCoordinate;
 
 /**
  * Test cases for the Location class.
@@ -21,7 +22,7 @@ public class LocationTest {
     @Test
     public void testConstructorWorks() {
         //Act & Arrange
-        Location location = new Location(new CartesianCoordinate(0,0,0));
+        Location location = new Location(createCartesianCoordinate(0,0,0));
 
         //Assert
         assertNotNull(location);
@@ -31,7 +32,7 @@ public class LocationTest {
     @Test
     public void testToStringWorks() {
         //Act
-        Location loc = new Location(new CartesianCoordinate(1.0,2.0,3.0));
+        Location loc = new Location(createCartesianCoordinate(1.0,2.0,3.0));
 
         //Arrange
         String locationToString = loc.toString();

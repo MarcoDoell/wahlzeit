@@ -4,8 +4,11 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import java.sql.ResultSet;
+import java.util.Objects;
 
 import static org.junit.Assert.assertEquals;
+import static org.wahlzeit.model.Coordinate.CartesianCoordinate.createCartesianCoordinate;
+import static org.wahlzeit.model.Coordinate.SphericCoordinate.createSphericCoordinate;
 
 public class AbstractCoordinateTest {
 
@@ -13,7 +16,7 @@ public class AbstractCoordinateTest {
     @Test(expected = IllegalArgumentException.class)
     public void testGetCentralAngleThrowsIllegalArgumentException() {
         //Act
-        Coordinate coord1 = new SphericCoordinate(1.0,1.0,1.0);
+        Coordinate coord1 = createSphericCoordinate(1.0,1.0,1.0);
 
         //Arrange
         double result = coord1.getCentralAngle(null);
@@ -22,8 +25,8 @@ public class AbstractCoordinateTest {
     @Test
     public void testGetCentralAngleWorksWithSpheric() {
         //Act
-        Coordinate coord1 = new SphericCoordinate(1.0,1.0,1.0);
-        Coordinate coord2 = new SphericCoordinate(0.0,0.0,0.0);
+        Coordinate coord1 = createSphericCoordinate(1.0,1.0,1.0);
+        Coordinate coord2 = createSphericCoordinate(0.0,0.0,0.0);
 
         //Arrange
         double result = coord1.getCentralAngle(coord2);
@@ -35,8 +38,8 @@ public class AbstractCoordinateTest {
     @Test
     public void testGetCentralAngleWorksWithCartesian() {
         //Act
-        Coordinate coord1 = new CartesianCoordinate(1.0,1.0,1.0);
-        Coordinate coord2 = new CartesianCoordinate(2.0,2.0,2.0);
+        Coordinate coord1 = createCartesianCoordinate(1.0,1.0,1.0);
+        Coordinate coord2 = createCartesianCoordinate(2.0,2.0,2.0);
 
         //Arrange
         double result = coord1.getCentralAngle(coord2);
@@ -47,8 +50,8 @@ public class AbstractCoordinateTest {
     @Test
     public void testGetDistanceWith200to100WithCartesian() {
         //Act
-        Coordinate coord1 = new CartesianCoordinate(2,0,0);
-        Coordinate coord2 = new CartesianCoordinate(1,0,0);
+        Coordinate coord1 = createCartesianCoordinate(2,0,0);
+        Coordinate coord2 = createCartesianCoordinate(1,0,0);
 
         //Arrange
         double result = coord1.getCartesianDistance(coord2);
@@ -60,8 +63,8 @@ public class AbstractCoordinateTest {
     @Test
     public void testGetDistanceWithSpheric() {
         //Act
-        Coordinate coord1 = new SphericCoordinate(Math.PI,0,0);
-        Coordinate coord2 = new SphericCoordinate(Math.PI,0,0);
+        Coordinate coord1 = createSphericCoordinate(Math.PI,0,0);
+        Coordinate coord2 = createSphericCoordinate(Math.PI,0,0);
 
         //Arrange
         double result = coord1.getCartesianDistance(coord2);
@@ -73,7 +76,7 @@ public class AbstractCoordinateTest {
     @Test(expected = IllegalArgumentException.class)
     public void testGetDistanceThrowsException() {
         //Act
-        Coordinate coord1 = new CartesianCoordinate(0,0,0);
+        Coordinate coord1 = createCartesianCoordinate(0,0,0);
         Coordinate coord2 = null;
 
         //Arrange
@@ -83,8 +86,8 @@ public class AbstractCoordinateTest {
     @Test()
     public void testisEqualworksWithCartesian() {
         //Act
-        Coordinate coord1 = new CartesianCoordinate(3.12312312351,0,0);
-        Coordinate coord2 = new CartesianCoordinate(3.12312312351,0,0);
+        Coordinate coord1 = createCartesianCoordinate(3.12312312351,0,0);
+        Coordinate coord2 = createCartesianCoordinate(3.12312312351,0,0);
 
         //Arrange
         boolean result = coord1.isEqual(coord2);
@@ -96,8 +99,8 @@ public class AbstractCoordinateTest {
     @Test()
     public void testisEqualworksWithSpheric() {
         //Act
-        Coordinate coord1 = new SphericCoordinate(3.12312312351,0,0);
-        Coordinate coord2 = new SphericCoordinate(3.12312312351,0,0);
+        Coordinate coord1 = createSphericCoordinate(3.12312312351,0,0);
+        Coordinate coord2 = createSphericCoordinate(3.12312312351,0,0);
 
         //Arrange
         boolean result = coord1.isEqual(coord2);
@@ -109,7 +112,7 @@ public class AbstractCoordinateTest {
     @Test(expected = IllegalArgumentException.class)
     public void testisEqualThrowsNullPointerException() {
         //Act
-        Coordinate coord1 = new CartesianCoordinate(0,0,0);
+        Coordinate coord1 = createCartesianCoordinate(0,0,0);
 
         //Arrange
         boolean result = coord1.isEqual(null);
@@ -118,8 +121,8 @@ public class AbstractCoordinateTest {
     @Test()
     public void testisEqualDoesntWorksWithCartesian() {
         //Act
-        Coordinate coord1 = new CartesianCoordinate(3.12312312351,0,0);
-        Coordinate coord2 = new CartesianCoordinate(3.12352312351,0,0);
+        Coordinate coord1 = createCartesianCoordinate(3.12312312351,0,0);
+        Coordinate coord2 = createCartesianCoordinate(3.12352312351,0,0);
 
         //Arrange
         boolean result = coord1.isEqual(coord2);
@@ -131,8 +134,8 @@ public class AbstractCoordinateTest {
     @Test()
     public void testisEqualDoesntWorksWithSpheric() {
         //Act
-        Coordinate coord1 = new SphericCoordinate(3.12312312351,3.0,Math.PI);
-        Coordinate coord2 = new SphericCoordinate(3.12352312351,1.0,Math.PI);
+        Coordinate coord1 = createSphericCoordinate(3.12312312351,3.0,Math.PI);
+        Coordinate coord2 = createSphericCoordinate(3.12352312351,1.0,Math.PI);
 
         //Arrange
         boolean result = coord1.isEqual(coord2);
@@ -144,8 +147,8 @@ public class AbstractCoordinateTest {
     @Test()
     public void testEqualsWorksWithCartesian() {
         //Act
-        Coordinate coord1 = new CartesianCoordinate(10,12,13);
-        Coordinate coord2 = new CartesianCoordinate(10,12,13);
+        Coordinate coord1 = createCartesianCoordinate(10,12,13);
+        Coordinate coord2 = createCartesianCoordinate(10,12,13);
 
         //Arrange
         boolean result = coord1.equals(coord2);
@@ -157,8 +160,8 @@ public class AbstractCoordinateTest {
     @Test()
     public void testEqualsWorksWithSpheric() {
         //Act
-        Coordinate coord1 = new SphericCoordinate(0,0,0);
-        Coordinate coord2 = new SphericCoordinate(0,0,0);
+        Coordinate coord1 = createSphericCoordinate(0,0,0);
+        Coordinate coord2 = createSphericCoordinate(0,0,0);
 
         //Arrange
         boolean result = coord1.equals(coord2);
@@ -170,8 +173,8 @@ public class AbstractCoordinateTest {
     @Test()
     public void testEqualsDoesntWorksWithCartesian() {
         //Act
-        Coordinate coord1 = new CartesianCoordinate(1,0,0);
-        Coordinate coord2 = new CartesianCoordinate(2,0,0);
+        Coordinate coord1 = createCartesianCoordinate(1,0,0);
+        Coordinate coord2 = createCartesianCoordinate(2,0,0);
 
         //Arrange
         boolean result = coord1.equals(coord2);
@@ -183,8 +186,8 @@ public class AbstractCoordinateTest {
     @Test()
     public void testEqualsDoesntWorksWithSpheric() {
         //Act
-        Coordinate coord1 = new SphericCoordinate(3.0,1.0,3.0);
-        Coordinate coord2 = new SphericCoordinate(3.0,1.0,Math.PI);
+        Coordinate coord1 = createSphericCoordinate(3.0,1.0,3.0);
+        Coordinate coord2 = createSphericCoordinate(3.0,1.0,Math.PI);
 
         //Arrange
         boolean result = coord1.equals(coord2);

@@ -6,13 +6,14 @@ import org.wahlzeit.model.Coordinate.Coordinate;
 import org.wahlzeit.model.Coordinate.SphericCoordinate;
 
 import static org.junit.Assert.assertEquals;
+import static org.wahlzeit.model.Coordinate.CartesianCoordinate.createCartesianCoordinate;
 
 
 public class CartesianCoordinateTest {
 
     @Test
     public void testAsSphericCoordinateY1(){
-        Coordinate coord = new CartesianCoordinate(0, 1, 0);
+        Coordinate coord = createCartesianCoordinate(0, 1, 0);
 
         SphericCoordinate sphericCoordinate = coord.asSphericCoordinate();
 
@@ -24,7 +25,7 @@ public class CartesianCoordinateTest {
 
     @Test
     public void testAsSphericCoordinateY1andZ1(){
-        Coordinate coord = new CartesianCoordinate(0, 1, 1);
+        Coordinate coord = createCartesianCoordinate(0, 1, 1);
 
         SphericCoordinate sphericCoordinate = coord.asSphericCoordinate();
 
@@ -35,7 +36,7 @@ public class CartesianCoordinateTest {
 
     @Test
     public void testAsSphericCoordinateX2Y3ZMinus1(){
-        Coordinate coord = new CartesianCoordinate(2, 3, -1);
+        Coordinate coord = createCartesianCoordinate(2, 3, -1);
 
         SphericCoordinate sphericCoordinate = coord.asSphericCoordinate();
 
@@ -46,17 +47,17 @@ public class CartesianCoordinateTest {
 
     @Test(expected = IllegalStateException.class)
     public void testConstructorDoesntAllowBadCartesianInstantiationForZ(){
-        Coordinate coord = new CartesianCoordinate(2, 3, Double.NaN);
+        Coordinate coord = createCartesianCoordinate(2, 3, Double.NaN);
     }
 
     @Test(expected = IllegalStateException.class)
     public void testConstructorDoesntAllowBadCartesianInstantiationForY(){
-        Coordinate coord = new CartesianCoordinate(2, Double.NaN, 2);
+        Coordinate coord = createCartesianCoordinate(2, Double.NaN, 2);
     }
 
     @Test(expected = IllegalStateException.class)
     public void testConstructorDoesntAllowBadCartesianInstantiationForX(){
-        Coordinate coord = new CartesianCoordinate(Double.NaN, 3, 2);
+        Coordinate coord = createCartesianCoordinate(Double.NaN, 3, 2);
     }
 
 

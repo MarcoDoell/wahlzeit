@@ -7,6 +7,7 @@ public abstract class AbstractCoordinate implements Coordinate {
 
     final static HashMap<Integer, CartesianCoordinate> cartesianCoordinateHashMap = new HashMap<>();
     final static HashMap<Integer, SphericCoordinate> sphericCoordinateHashMap = new HashMap<>();
+    final int HASH_MULTIPLIER = 59;
 
     /**
      * Converts any Coordinate type to Cartesian Type

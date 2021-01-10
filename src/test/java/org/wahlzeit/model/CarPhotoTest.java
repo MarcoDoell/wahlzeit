@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static org.mockito.Mockito.verify;
+import static org.wahlzeit.model.Coordinate.CartesianCoordinate.createCartesianCoordinate;
 
 public class CarPhotoTest {
 
@@ -20,7 +21,7 @@ public class CarPhotoTest {
         ResultSet resultSet = Mockito.mock(ResultSet.class);
 
         CarPhoto photo = new CarPhoto();
-        photo.setLocation(new Location(new CartesianCoordinate(1,2,3)));
+        photo.setLocation(new Location(createCartesianCoordinate(1,2,3)));
         photo.setOwnerEmailAddress(EmailAddress.getFromString("wahlzeit@wahlzeit.de"));
         photo.setOwnerHomePage(new URL("http://www.wahlzeit.de"));
 

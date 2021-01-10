@@ -49,7 +49,7 @@ public class SphericCoordinate extends AbstractCoordinate {
 
         SphericCoordinate cart = new SphericCoordinate(phi, theta, radius);
 
-        SphericCoordinate result = sphericCoordinateHashMap.get(cart.hashCode());
+        SphericCoordinate result = sphericCoordinateHashMap.get(cart.doHashCode());
 
         return doCreateSphericCoordinateFromString(cart,result);
     }
@@ -58,7 +58,7 @@ public class SphericCoordinate extends AbstractCoordinate {
 
         SphericCoordinate cart = new SphericCoordinate(coordinate);
 
-        SphericCoordinate result = sphericCoordinateHashMap.get(cart.hashCode());
+        SphericCoordinate result = sphericCoordinateHashMap.get(cart.doHashCode());
 
        return doCreateSphericCoordinateFromString(cart,result);
     }
@@ -66,10 +66,10 @@ public class SphericCoordinate extends AbstractCoordinate {
     public static SphericCoordinate doCreateSphericCoordinateFromString(SphericCoordinate cart, SphericCoordinate result) {
         if(result == null) {
             synchronized (sphericCoordinateHashMap) {
-                result = sphericCoordinateHashMap.get(cart.hashCode());
+                result = sphericCoordinateHashMap.get(cart.doHashCode());
                 if (result == null) {
                     result = cart;
-                    sphericCoordinateHashMap.put(cart.hashCode(), cart);
+                    sphericCoordinateHashMap.put(cart.doHashCode(), cart);
                 }
             }
         }
@@ -158,7 +158,7 @@ public class SphericCoordinate extends AbstractCoordinate {
      */
     @Override
     public int doHashCode() {
-        return Objects.hash(phi, theta, radius);
+        return Objects.hash(phi*HASH_MULTIPLIER, theta*HASH_MULTIPLIER, radius*HASH_MULTIPLIER);
     }
 
     /**
