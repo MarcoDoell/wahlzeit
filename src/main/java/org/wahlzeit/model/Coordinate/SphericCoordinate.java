@@ -10,9 +10,9 @@ import java.util.Objects;
 public class SphericCoordinate extends AbstractCoordinate {
 
 
-    private double phi;
-    private double theta;
-    private double radius;
+    private final double phi;
+    private final double theta;
+    private final double radius;
 
     /**
      *
@@ -53,10 +53,10 @@ public class SphericCoordinate extends AbstractCoordinate {
      *
      * @methodtype set
      */
-    public void setTheta(Double theta) {
+    /*public void setTheta(Double theta) {
         this.theta = theta;
         assertClassInvariants();
-    }
+    }*/
 
     /**
      *
@@ -70,10 +70,10 @@ public class SphericCoordinate extends AbstractCoordinate {
      *
      * @methodtype set
      */
-    public void setRadius(Double radius) {
+    /*public void setRadius(Double radius) {
         this.radius = radius;
         assertClassInvariants();
-    }
+    }*/
 
     /**
      *
@@ -87,10 +87,10 @@ public class SphericCoordinate extends AbstractCoordinate {
      *
      * @methodtype set
      */
-    public void setPhi(Double phi) {
+    /*public void setPhi(Double phi) {
         this.phi = phi;
         assertClassInvariants();
-    }
+    }*/
 
 
     /**

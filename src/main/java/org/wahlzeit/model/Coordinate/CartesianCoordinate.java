@@ -3,9 +3,9 @@ package org.wahlzeit.model.Coordinate;
 import java.util.Objects;
 
 public class CartesianCoordinate extends AbstractCoordinate {
-    private double x;
-    private double y;
-    private double z;
+    private final double x;
+    private final double y;
+    private final double z;
 
     /**
      *
@@ -125,10 +125,10 @@ public class CartesianCoordinate extends AbstractCoordinate {
      *
      * @methodtype set
      */
-    public void setX(double x) {
+    /*public void setX(double x) {
         this.x = x;
         assertClassInvariants();
-    }
+    }*/
 
     /**
      *
@@ -142,10 +142,10 @@ public class CartesianCoordinate extends AbstractCoordinate {
      *
      * @methodtype set
      */
-    public void setY(double y) {
+    /*public void setY(double y) {
         this.y = y;
         assertClassInvariants();
-    }
+    }*/
 
     /**
      *
@@ -159,8 +159,8 @@ public class CartesianCoordinate extends AbstractCoordinate {
      *
      * @methodtype set
      */
-    public void setZ(double z) {
+    /*public void setZ(double z) {
         this.z = z;
         assertClassInvariants();
-    }
+    }*/
 }
