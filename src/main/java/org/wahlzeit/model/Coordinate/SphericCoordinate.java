@@ -88,10 +88,11 @@ public class SphericCoordinate extends AbstractCoordinate {
      *
      * @methodtype set
      */
-    /*public void setTheta(Double theta) {
-        this.theta = theta;
+    public SphericCoordinate setTheta(Double theta) {
+        SphericCoordinate coord = createSphericCoordinate(this.phi,theta, this.radius);
         assertClassInvariants();
-    }*/
+        return coord;
+    }
 
     /**
      *
@@ -105,10 +106,11 @@ public class SphericCoordinate extends AbstractCoordinate {
      *
      * @methodtype set
      */
-    /*public void setRadius(Double radius) {
-        this.radius = radius;
+    public SphericCoordinate setRadius(Double radius) {
+        SphericCoordinate coord = createSphericCoordinate(this.phi,this.theta, radius);
         assertClassInvariants();
-    }*/
+        return coord;
+    }
 
     /**
      *
@@ -122,10 +124,11 @@ public class SphericCoordinate extends AbstractCoordinate {
      *
      * @methodtype set
      */
-    /*public void setPhi(Double phi) {
-        this.phi = phi;
+    public SphericCoordinate setPhi(Double phi) {
+        SphericCoordinate coord = createSphericCoordinate(phi,this.theta, this.radius);
         assertClassInvariants();
-    }*/
+        return coord;
+    }
 
 
     /**

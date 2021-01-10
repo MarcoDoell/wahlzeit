@@ -161,10 +161,11 @@ public class CartesianCoordinate extends AbstractCoordinate {
      *
      * @methodtype set
      */
-    /*public void setX(double x) {
-        this.x = x;
+    public CartesianCoordinate setX(double x) {
+        CartesianCoordinate coord = createCartesianCoordinate(x,this.y, this.z);
         assertClassInvariants();
-    }*/
+        return coord;
+    }
 
     /**
      *
@@ -178,10 +179,11 @@ public class CartesianCoordinate extends AbstractCoordinate {
      *
      * @methodtype set
      */
-    /*public void setY(double y) {
-        this.y = y;
+    public CartesianCoordinate setY(double y) {
+        CartesianCoordinate coord = createCartesianCoordinate(this.x,y, this.z);
         assertClassInvariants();
-    }*/
+        return coord;
+    }
 
     /**
      *
@@ -195,8 +197,9 @@ public class CartesianCoordinate extends AbstractCoordinate {
      *
      * @methodtype set
      */
-    /*public void setZ(double z) {
-        this.z = z;
+    public CartesianCoordinate setZ(double z) {
+        CartesianCoordinate coord = createCartesianCoordinate(this.x,this.y, z);
         assertClassInvariants();
-    }*/
+        return coord;
+    }
 }
