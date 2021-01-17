@@ -29,6 +29,12 @@ import org.wahlzeit.services.SysLog;
  * @author dirk
  *
  */
+@PatternInstance(
+		patternName = "Null Object Pattern",
+		participants = {
+				"NullEmailService"
+		}
+)
 public class NullEmailService implements EmailService {
 
 	@Override
