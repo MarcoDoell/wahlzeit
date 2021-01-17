@@ -32,7 +32,7 @@ public class SphericCoordinate extends AbstractCoordinate {
     /**
      * Converts the String of Coordinates to Phi, Radius and Theta
      * @methodtype constructor
-     * @param Coordinatesas String
+     * @param Coordinates as String
      */
     private SphericCoordinate(String coordinateasString) {
 
@@ -46,31 +46,24 @@ public class SphericCoordinate extends AbstractCoordinate {
     }
 
     public static SphericCoordinate createSphericCoordinate(double phi, double theta, double radius) {
-
         SphericCoordinate cart = new SphericCoordinate(phi, theta, radius);
 
-        SphericCoordinate result = sphericCoordinateHashMap.get(cart.doHashCode());
-
-        return doCreateSphericCoordinateFromString(cart,result);
+        return doCreateSphericCoordinateFromString(cart);
     }
 
     public static SphericCoordinate createSphericCoordinateFromString(String coordinate) {
-
         SphericCoordinate cart = new SphericCoordinate(coordinate);
 
-        SphericCoordinate result = sphericCoordinateHashMap.get(cart.doHashCode());
-
-       return doCreateSphericCoordinateFromString(cart,result);
+        return doCreateSphericCoordinateFromString(cart);
     }
 
-    public static SphericCoordinate doCreateSphericCoordinateFromString(SphericCoordinate cart, SphericCoordinate result) {
-        if(result == null) {
-            synchronized (sphericCoordinateHashMap) {
-                result = sphericCoordinateHashMap.get(cart.doHashCode());
-                if (result == null) {
-                    result = cart;
-                    sphericCoordinateHashMap.put(cart.doHashCode(), cart);
-                }
+    public static SphericCoordinate doCreateSphericCoordinateFromString(SphericCoordinate cart) {
+        SphericCoordinate result = null;
+        synchronized (sphericCoordinateHashMap) {
+            result = sphericCoordinateHashMap.get(cart.doHashCode());
+            if (result == null) {
+                result = cart;
+                sphericCoordinateHashMap.put(cart.doHashCode(), cart);
             }
         }
 
