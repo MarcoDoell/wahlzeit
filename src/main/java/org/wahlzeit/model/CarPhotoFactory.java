@@ -9,6 +9,12 @@ import java.util.logging.Logger;
  *
  * CarPhotoFactory class for creating CarPhotos
  */
+@PatternInstance(
+        patternName = "Abstract Factory",
+        participants = {
+                "CarPhoto", "CarPhotoFactory"
+        }
+)
 public class CarPhotoFactory extends PhotoFactory {
 
     private static final Logger logger = Logger.getLogger(CarPhotoFactory.class.getName());

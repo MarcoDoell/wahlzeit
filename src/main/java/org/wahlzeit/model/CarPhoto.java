@@ -11,6 +11,12 @@ import java.sql.SQLException;
  *
  * CarPhoto class
  */
+@PatternInstance(
+        patternName = "Abstract Factory",
+        participants = {
+                "CarPhoto", "CarPhotoFactory"
+        }
+)
 public class CarPhoto extends Photo {
 
     Car car = new Car("Audi");

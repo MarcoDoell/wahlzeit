@@ -9,6 +9,12 @@ import java.util.logging.Logger;
  *
  * CarPhotoManager class for managing CarPhotos
  */
+@PatternInstance(
+        patternName = "Singleton",
+        participants = {
+                "CarPhotoManager"
+        }
+)
 public class CarPhotoManager extends PhotoManager {
 
     private final static Logger log = Logger.getLogger(CarPhotoManager.class.getName());

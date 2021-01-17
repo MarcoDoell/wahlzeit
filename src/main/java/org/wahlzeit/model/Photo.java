@@ -36,6 +36,12 @@ import static org.wahlzeit.model.Coordinate.SphericCoordinate.createSphericCoord
 /**
  * A photo represents a user-provided (uploaded) photo.
  */
+@PatternInstance(
+		patternName = "Abstract Factory",
+		participants = {
+				"Photo", "PhotoFactory"
+		}
+)
 public class Photo extends DataObject {
 
 	/**

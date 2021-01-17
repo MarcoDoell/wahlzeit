@@ -1,12 +1,17 @@
 package org.wahlzeit.model.Coordinate;
 
+import org.wahlzeit.model.PatternInstance;
+
 import java.util.HashMap;
 
+@PatternInstance(
+        patternName = "Flyweight",
+        participants = {
+                "AbstractCoordinate", "SphericCoordinate", "CartesianCoordinate"
+        }
+)
 public abstract class AbstractCoordinate implements Coordinate {
 
-
-    final static HashMap<Integer, CartesianCoordinate> cartesianCoordinateHashMap = new HashMap<>();
-    final static HashMap<Integer, SphericCoordinate> sphericCoordinateHashMap = new HashMap<>();
     final int HASH_MULTIPLIER = 59;
 
     /**

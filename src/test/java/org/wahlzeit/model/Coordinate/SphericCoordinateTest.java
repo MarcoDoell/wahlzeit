@@ -7,11 +7,9 @@ import org.wahlzeit.model.Coordinate.Coordinate;
 import org.wahlzeit.model.Coordinate.SphericCoordinate;
 
 import static org.junit.Assert.*;
-import static org.wahlzeit.model.Coordinate.AbstractCoordinate.sphericCoordinateHashMap;
 import static org.wahlzeit.model.Coordinate.CartesianCoordinate.createCartesianCoordinate;
 import static org.wahlzeit.model.Coordinate.CartesianCoordinate.createCartesianCoordinateFromString;
-import static org.wahlzeit.model.Coordinate.SphericCoordinate.createSphericCoordinate;
-import static org.wahlzeit.model.Coordinate.SphericCoordinate.createSphericCoordinateFromString;
+import static org.wahlzeit.model.Coordinate.SphericCoordinate.*;
 
 public class SphericCoordinateTest {
 
