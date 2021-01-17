@@ -21,6 +21,7 @@
 package org.wahlzeit.services.mailing;
 
 import org.wahlzeit.main.ServiceMain;
+import org.wahlzeit.model.PatternInstance;
 
 /**
  * 

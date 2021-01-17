@@ -22,6 +22,7 @@ package org.wahlzeit.services.mailing;
 
 import javax.mail.Message;
 
+import org.wahlzeit.model.PatternInstance;
 import org.wahlzeit.services.EmailAddress;
 import org.wahlzeit.services.SysLog;
 import org.wahlzeit.utils.StringUtil;

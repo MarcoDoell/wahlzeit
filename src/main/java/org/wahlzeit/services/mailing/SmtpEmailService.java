@@ -24,6 +24,7 @@ import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 
+import org.wahlzeit.model.PatternInstance;
 import org.wahlzeit.services.EmailAddress;
 
 /**

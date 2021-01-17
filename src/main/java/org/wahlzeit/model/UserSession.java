@@ -14,6 +14,12 @@ import org.wahlzeit.utils.*;
 /**
  * Wrapper class for HttpSession to provide a readable interface for Wahlzeit.
  */
+@PatternInstance(
+		patternName = "Adapter",
+		participants = {
+				"UserSession", "Session"
+		}
+)
 public class UserSession extends Session {
 
 	/**
