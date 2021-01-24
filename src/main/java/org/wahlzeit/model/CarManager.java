@@ -50,6 +50,10 @@ public class CarManager extends ObjectManager {
             throw new AssertionError("It is not allowed to have the same Cartype Name!");
     }
 
+    protected Map<String, CarType> getCarTypes() {
+        return this.carTypes;
+    }
+
     @Override
     protected Persistent createObject(ResultSet rset) throws SQLException, CreateCarPhotoException {
         String typename = rset.getObject("carType", CarType.class).getTypeName();

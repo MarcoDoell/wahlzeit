@@ -19,6 +19,7 @@ public class CarType {
         this.typeName = name;
         this.id = UUID.randomUUID().toString();
         this.manager = CarManager.getInstance();
+        this.manager.getCarTypes().put(name,this);
     }
 
     public CarType(String name, Set<CarType> subTypes, CarType superType) {
@@ -27,6 +28,7 @@ public class CarType {
         this.manager = CarManager.getInstance();
         this.subTypes = subTypes;
         this.superType = superType;
+        this.manager.getCarTypes().put(name,this);
     }
     public CarType getSuperType() {
         return superType;

@@ -63,7 +63,7 @@ public class Car extends DataObject {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return Objects.equals(brand, car.brand) && car.getId().equals(this.getId());
+        return Objects.equals(brand, car.brand) && car.getType().equals(this.getType());
     }
 
     @Override
