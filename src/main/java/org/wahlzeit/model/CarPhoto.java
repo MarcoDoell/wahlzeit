@@ -19,7 +19,9 @@ import java.sql.SQLException;
 )
 public class CarPhoto extends Photo {
 
-    Car car = new Car("Audi");
+    Car car = new Car("Audi", new CarType("first type"));
+
+    PhotoManager carPhotoManager = CarPhotoManager.getInstance();
 
     /**
      *
@@ -77,7 +79,7 @@ public class CarPhoto extends Photo {
     @Override
     public void readFrom(ResultSet rset) throws SQLException, IllegalStateException {
         super.readFrom(rset);
-        this.car = new Car(rset.getString("brand"));
+        this.car = new Car(rset.getString("brand"), new CarType("TODO"));
         assertClassInvariants();
     }
 

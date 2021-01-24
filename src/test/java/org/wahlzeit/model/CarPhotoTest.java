@@ -42,7 +42,7 @@ public class CarPhotoTest {
         Mockito.when(resultSet.getString("coordinateidentifier")).thenReturn("spheric");
         Mockito.when(resultSet.getString("brand")).thenReturn("asdasda");
 
-        CarPhoto photo = new CarPhoto(new Car("asassas"));
+        CarPhoto photo = new CarPhoto(new Car("asassas", new CarType("ss")));
 
         //Act
         photo.readFrom(resultSet);
