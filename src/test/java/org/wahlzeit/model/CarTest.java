@@ -56,8 +56,8 @@ public class CarTest {
         car.writeOn(resultSet);
 
         //Assert
-        verify(resultSet).updateString("brand",car.getId());
-        verify(resultSet).updateString("id",car.getBrand());
+        verify(resultSet).updateString("id",car.getId());
+        verify(resultSet).updateString("brand",car.getBrand());
         verify(resultSet).updateObject("carType", car.getType());
     }
 }
