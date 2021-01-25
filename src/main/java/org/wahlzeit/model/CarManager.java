@@ -8,6 +8,12 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+@PatternInstance(
+        patternName = "Singleton",
+        participants = {
+                "CarManager"
+        }
+)
 public class CarManager extends ObjectManager {
 
     protected Map<String, Car> cars = new HashMap<String, Car>();

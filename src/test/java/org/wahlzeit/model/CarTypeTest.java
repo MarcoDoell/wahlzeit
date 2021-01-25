@@ -92,10 +92,30 @@ public class CarTypeTest {
     }
 
     @Test
+    public void testForHierarchy() {
+        CarType root = new CarType("test");
+        CarType underRootLeft = new CarType("audi",new HashSet<>(),root);
+        CarType underRootRight = new CarType("right",new HashSet<>(),root);
+        CarType leafLeft = new CarType("leaf",new HashSet<>(),underRootLeft);
+
+        root.addSubType(underRootLeft);
+        root.addSubType(underRootRight);
+        underRootLeft.addSubType(leafLeft);
+
+
+        assertTrue(root.isSubtype(leafLeft));
+        assertTrue(root.isSubtype(underRootLeft));
+        assertTrue(root.isSubtype(underRootRight));
+
+        assertTrue(underRootLeft.isSubtype(leafLeft));
+        assertFalse(underRootRight.isSubtype(leafLeft));
+
+    }
+
+    @Test
     public void testEqualsDoesntWorks() {
         CarType ct = new CarType("test", new HashSet<CarType>(), new CarType("ss"));
         CarType ct2 = new CarType("audi");
-
 
         assertFalse(ct.equals(ct2));
     }
